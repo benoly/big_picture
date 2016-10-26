@@ -1,3 +1,32 @@
+/*index.html*/
+body {
+  margin: 0;
+}
+
+.header {
+  height: 50px;
+  width: 100vw;
+  background-color: blue;
+  position: fixed;
+}
+
+.header h2 {
+  text-align: center;
+  color: white;
+  margin-top: 10px;
+}
+
+#addNew {
+  position: absolute;
+  top: 17px;
+  right: 30px;
+}
+
+/*home.html*/
+#mainSvg {
+  padding-top: 40px;
+}
+
 #caseLine {
   stroke:black;
   stroke-width:2
