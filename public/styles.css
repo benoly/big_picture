@@ -1,0 +1,68 @@
+#caseLine {
+  stroke:black;
+  stroke-width:2
+}
+
+#schedConf {
+  stroke:black;
+  stroke-width:2;
+  fill:white
+}
+
+#joinAmend {
+  stroke:black;
+  stroke-width:1;
+  fill:green
+}
+
+#witnessDiscl {
+  stroke:black;
+  stroke-width:1;
+  fill:orange
+}
+
+#discovery {
+  stroke:black;
+  stroke-width:1;
+  fill:red
+}
+
+#motions {
+  stroke:black;
+  stroke-width:1;
+  fill:chartreuse
+}
+
+#mediation {
+  stroke:black;
+  stroke-width:1;
+  fill:blue
+}
+
+#pretrialExchange {
+  stroke:black;
+  stroke-width:1;
+  fill:purple
+}
+
+#FPTC {
+  stroke:black;
+  stroke-width:1;
+  fill:yellow
+}
+
+#trialBox {
+  fill:red;
+  stroke:black;
+  stroke-width:2
+}
+
+#dateLine {
+  stroke:black;
+  stroke-width:2
+}
+
+#blackLine {
+  stroke:black;
+  stroke-width:2
+}
