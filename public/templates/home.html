@@ -6,34 +6,33 @@
     <line id="dateLine" x1="{{todaysDateX * 3}}" y1="0" x2="{{todaysDateX * 3}}" y2="700"/>
 
     <g ng-repeat="case in allTheCases | orderBy: '+schedConf'">
+      <line id="caseLine" x1="{{case.schedConfX * 3}}" y1="{{($index + 1) * 100}}" x2="{{case.lastDateX * 3}}" y2="{{($index + 1) * 100}}"/>
       <circle id="schedConf" cx="{{case.schedConfX * 3}}" cy="{{($index + 1) * 100}}" r="10"/>
-      <a href="#" nf-if="Number.isInteger({{case.joinAmendX}})"><circle id="joinAmend" cx="{{case.joinAmendX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <!-- <a href="#"><circle id="witnessDiscl" cx="{{case.witDisclX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#"><circle id="expWitnessDiscl" cx="{{case.expWitDisclX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#"><circle id="discovery" cx="{{case.discoX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#"><circle id="plDiscovery" cx="{{case.plDiscoX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#"><circle id="defDiscovery" cx="{{case.defDiscoX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#"><circle id="motions" cx="{{case.motsX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#"><circle id="discoMotions" cx="{{case.discoMotsX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#"><circle id="dispoMotions" cx="{{case.dispoMotsX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#"><circle id="nonDispoMotions" cx="{{case.nonDispoMotsX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#"><circle id="motsLimine" cx="{{case.motsLimX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#"><circle id="mediation" cx="{{case.medX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#"><circle id="mediatorSelect" cx="{{case.medSelectX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#"><circle id="pretConsult" cx="{{case.pretConsultX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#"><circle id="pretrialExchange" cx="{{case.pretExchX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#"><circle id="FPTO" cx="{{case.pretOrdX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#"><circle id="FPTC" cx="{{case.pretConfX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#"><circle id="trialBrief" cx="{{case.trBrfX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#"><circle id="juryInst" cx="{{case.juryInstX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#"><circle id="trWitList" cx="{{case.trWitX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#"><circle id="trExhList" cx="{{case.trExhX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#"><circle id="depoDesig" cx="{{case.depoDesigX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#"><rect id="trialBox" x="{{case.trBeginX * 3}}" y="{{(($index + 1) * 100)-10}}" width="{{case.trLength * 3}}" height="20"/></a> -->
+      <a href="#" ng-show={{case.joinAmendX}}><circle id="joinAmend" cx="{{case.joinAmendX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#" ng-show={{case.witDisclX}}><circle id="witnessDiscl" cx="{{case.witDisclX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#" ng-show={{case.expWitDisclX}}><circle id="expWitnessDiscl" cx="{{case.expWitDisclX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#" ng-show={{case.discoX}}><circle id="discovery" cx="{{case.discoX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#" ng-show={{case.plDiscoX}}><circle id="plDiscovery" cx="{{case.plDiscoX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#" ng-show={{case.defDiscoX}}><circle id="defDiscovery" cx="{{case.defDiscoX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#" ng-show={{case.motsX}}><circle id="motions" cx="{{case.motsX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#" ng-show={{case.discoMotsX}}><circle id="discoMotions" cx="{{case.discoMotsX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#" ng-show={{case.dispoMotsX}}><circle id="dispoMotions" cx="{{case.dispoMotsX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#" ng-show={{case.nonDispoMotsX}}><circle id="nonDispoMotions" cx="{{case.nonDispoMotsX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#" ng-show={{case.motsLimX}}><circle id="motsLimine" cx="{{case.motsLimX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#" ng-show={{case.medX}}><circle id="mediation" cx="{{case.medX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#" ng-show={{case.medSelectX}}><circle id="mediatorSelect" cx="{{case.medSelectX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#" ng-show={{case.pretConsultX}}><circle id="pretConsult" cx="{{case.pretConsultX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#" ng-show={{case.pretExchX}}><circle id="pretrialExchange" cx="{{case.pretExchX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#" ng-show={{case.pretOrdX}}><circle id="FPTO" cx="{{case.pretOrdX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#" ng-show={{case.pretConfX}}><circle id="FPTC" cx="{{case.pretConfX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#" ng-show={{case.trBrfX}}><circle id="trialBrief" cx="{{case.trBrfX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#" ng-show={{case.juryInstX}}><circle id="juryInst" cx="{{case.juryInstX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#" ng-show={{case.trWitX}}><circle id="trWitList" cx="{{case.trWitX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#" ng-show={{case.trExhX}}><circle id="trExhList" cx="{{case.trExhX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#" ng-show={{case.depoDesigX}}><circle id="depoDesig" cx="{{case.depoDesigX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#" ng-show={{case.trBeginX}}><rect id="trialBox" x="{{case.trBeginX * 3}}" y="{{(($index + 1) * 100)-10}}" width="{{case.trLength * 3}}" height="20"/></a>
 
     </g>
-
-
 
     <!-- <div ng-repeat= "case in cases | orderBy: '+schedConf'"> -->
       <!-- <line id="caseLine" x1="120" y1="100" x2="1095" y2="100"/>
