@@ -1,28 +1,64 @@
+<br><br><br>
 <div class="container">
 
   <svg id="mainSvg" height="1000" width="5000">
 
-    <line id="caseLine" x1="120" y1="100" x2="1095" y2="100"/>
-      <circle id="schedConf" cx="120" cy="100" r="10"/>
-        <a href="#"><text x="10" y="103">Lilo v. Stitch</text></a>
-      <a href="#"><circle id="joinAmend" cx="150" cy="100" r="5"/></a>
-        <a href="#"><text x="150" y="90" transform="rotate(-45 150, 90)">Join/Amend</text></a>
-      <a href="#"><circle id="witnessDiscl" cx="450" cy="100" r="5"/></a>
-        <a href="#"><text x="450" y="90" transform="rotate(-45 450, 90)">Wit Discl</text></a>
-      <a href="#"><circle id="discovery" cx="523" cy="100" r="5"/></a>
-        <a href="#"><text x="523" y="90" transform="rotate(-45 523, 90)">Disco</text></a>
-      <a href="#"><circle id="motions" cx="600" cy="100" r="5"/></a>
-        <a href="#"><text x="600" y="90" transform="rotate(-45 600, 90)">Motions</text></a>
-      <a href="#"><circle id="mediation" cx="800" cy="100" r="5"/></a>
-        <a href="#"><text x="800" y="90" transform="rotate(-45 800, 90)">Mediation</text></a>
-      <a href="#"><circle id="pretrialExchange" cx="900" cy="100" r="5"/></a>
-        <a href="#"><text x="900" y="90" transform="rotate(-45 900, 90)">Pretrial Exch</text></a>
-      <a href="#"><circle id="FPTC" cx="1000" cy="100" r="5"/></a>
-        <a href="#"><text x="1000" y="90" transform="rotate(-45 1000, 90)">FPTC</text></a>
-      <a href="#"><rect id="trialBox" x="1095" y="90" width="36" height="20"/></a>
-        <a href="#"><text x="1095" y="85">Trial</text></a>
+    <line id="dateLine" x1="{{todaysDateX * 3}}" y1="0" x2="{{todaysDateX * 3}}" y2="700"/>
 
-    <line id="caseLine" x1="270" y1="200" x2="1100" y2="200"/>
+    <g ng-repeat="case in allTheCases | orderBy: '+schedConf'">
+      <circle id="schedConf" cx="{{case.schedConfX * 3}}" cy="{{($index + 1) * 100}}" r="10"/>
+      <a href="#" nf-if="Number.isInteger({{case.joinAmendX}})"><circle id="joinAmend" cx="{{case.joinAmendX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <!-- <a href="#"><circle id="witnessDiscl" cx="{{case.witDisclX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#"><circle id="expWitnessDiscl" cx="{{case.expWitDisclX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#"><circle id="discovery" cx="{{case.discoX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#"><circle id="plDiscovery" cx="{{case.plDiscoX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#"><circle id="defDiscovery" cx="{{case.defDiscoX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#"><circle id="motions" cx="{{case.motsX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#"><circle id="discoMotions" cx="{{case.discoMotsX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#"><circle id="dispoMotions" cx="{{case.dispoMotsX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#"><circle id="nonDispoMotions" cx="{{case.nonDispoMotsX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#"><circle id="motsLimine" cx="{{case.motsLimX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#"><circle id="mediation" cx="{{case.medX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#"><circle id="mediatorSelect" cx="{{case.medSelectX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#"><circle id="pretConsult" cx="{{case.pretConsultX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#"><circle id="pretrialExchange" cx="{{case.pretExchX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#"><circle id="FPTO" cx="{{case.pretOrdX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#"><circle id="FPTC" cx="{{case.pretConfX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#"><circle id="trialBrief" cx="{{case.trBrfX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#"><circle id="juryInst" cx="{{case.juryInstX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#"><circle id="trWitList" cx="{{case.trWitX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#"><circle id="trExhList" cx="{{case.trExhX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#"><circle id="depoDesig" cx="{{case.depoDesigX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
+      <a href="#"><rect id="trialBox" x="{{case.trBeginX * 3}}" y="{{(($index + 1) * 100)-10}}" width="{{case.trLength * 3}}" height="20"/></a> -->
+
+    </g>
+
+
+
+    <!-- <div ng-repeat= "case in cases | orderBy: '+schedConf'"> -->
+      <!-- <line id="caseLine" x1="120" y1="100" x2="1095" y2="100"/>
+        <circle id="schedConf" cx="120" cy="100" r="10"/>
+          <a href="#"><text x="10" y="103">Lilo v. Stitch</text></a>
+        <a href="#"><circle id="joinAmend" cx="150" cy="100" r="5"/></a>
+          <a href="#"><text x="150" y="90" transform="rotate(-45 150, 90)">Join/Amend</text></a>
+        <a href="#"><circle id="witnessDiscl" cx="450" cy="100" r="5"/></a>
+          <a href="#"><text x="450" y="90" transform="rotate(-45 450, 90)">Wit Discl</text></a>
+        <a href="#"><circle id="discovery" cx="523" cy="100" r="5"/></a>
+          <a href="#"><text x="523" y="90" transform="rotate(-45 523, 90)">Disco</text></a>
+        <a href="#"><circle id="motions" cx="600" cy="100" r="5"/></a>
+          <a href="#"><text x="600" y="90" transform="rotate(-45 600, 90)">Motions</text></a>
+        <a href="#"><circle id="mediation" cx="800" cy="100" r="5"/></a>
+          <a href="#"><text x="800" y="90" transform="rotate(-45 800, 90)">Mediation</text></a>
+        <a href="#"><circle id="pretrialExchange" cx="900" cy="100" r="5"/></a>
+          <a href="#"><text x="900" y="90" transform="rotate(-45 900, 90)">Pretrial Exch</text></a>
+        <a href="#"><circle id="FPTC" cx="1000" cy="100" r="5"/></a>
+          <a href="#"><text x="1000" y="90" transform="rotate(-45 1000, 90)">FPTC</text></a>
+        <a href="#"><rect id="trialBox" x="1095" y="90" width="36" height="20"/></a>
+          <a href="#"><text x="1095" y="85">Trial</text></a> -->
+    <!-- </div> -->
+
+
+    <!-- <line id="caseLine" x1="270" y1="200" x2="1100" y2="200"/>
       <circle id="schedConf" cx="270" cy="200" r="10"/>
         <a href="#"><text x="150" y="203">Benny v. June</text></a>
       <a href="#"><circle id="joinAmend" cx="400" cy="200" r="5"/></a>
@@ -122,7 +158,7 @@
       <a href="#"><rect id="trialBox" x="1580" y="590" width="45" height="20"/></a>
         <a href="#"><text x="1580" y="585">Trial</text></a>
 
-    <line id="dateLine" x1="975" y1="0" x2="975" y2="700"/>
+    <line id="dateLine" x1="975" y1="0" x2="975" y2="700"/> -->
 
     <!-- <line id="blackLine" x1="0" y1="700" x2="5000" y2="700"/>
         <line id="blackLine" x1="90" y1="690" x2="90" y2="700"/>

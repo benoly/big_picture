@@ -7,6 +7,9 @@ var app = express();
 var caseCtrl = require('./controllers/caseCtrl.js');
 var clientCtrl = require('./controllers/clientCtrl.js');
 
+var moment = require('moment');
+moment().format();
+
 app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded());
@@ -17,10 +20,10 @@ app.post('/case', caseCtrl.create);
 app.put('/case/:id', caseCtrl.update);
 app.delete('/case/:id', caseCtrl.destroy);
 
-app.get('/client', clientCtrl.read);
-app.post('/client', clientCtrl.create);
-app.put('/client/:id', clientCtrl.update);
-app.delete('/client/:id', clientCtrl.destroy);
+// app.get('/client', clientCtrl.read);
+// app.post('/client', clientCtrl.create);
+// app.put('/client/:id', clientCtrl.update);
+// app.delete('/client/:id', clientCtrl.destroy);
 
 mongoose.connect('mongodb://localhost: 27017/caseDB');
 mongoose.connection.once('open', function(){

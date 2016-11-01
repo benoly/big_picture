@@ -8,14 +8,18 @@
   <body ng-controller="mainCtrl">
 
     <header class="header">
-      <h2>Big Picture</h2>
+      <!-- <h2>Big Picture</h2> -->
       <button id="addNew" type="button" name="button">Add New</button>
     </header>
+
+    <add-new></add-new>
 
     <ui-view></ui-view>
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.2/moment.min.js"></script>
     <script src="app.js"></script>
     <script src="mainCtrl.js"></script>
     <script src="mainServ.js"></script>
