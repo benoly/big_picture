@@ -96,13 +96,17 @@ body {
 
 #caseLine {
   stroke:black;
-  stroke-width:2
+  stroke-width:4
 }
 
 #schedConf {
   stroke:black;
-  stroke-width:2;
-  fill:white
+  stroke-width:4;
+  fill:white;
+}
+
+#caseName {
+  text-decoration: underline
 }
 
 #joinAmend {

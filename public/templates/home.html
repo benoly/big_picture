@@ -1,44 +1,102 @@
 <br><br><br>
 <div class="container">
 
-  <svg id="mainSvg" height="1000" width="5000">
+  <svg id="mainSvg" height="1500" width="5000">
 
-    <line id="dateLine" x1="{{todaysDateX * 3}}" y1="0" x2="{{todaysDateX * 3}}" y2="700"/>
+    <line id="dateLine" ng-attr-x1="{{todaysDateX * 3}}" y1="10" ng-attr-x2="{{todaysDateX * 3}}" y2="1500"/>
+      <text ng-attr-x="{{(todaysDateX * 3) - 20}}" y="5">Today</text></a>
 
     <g ng-repeat="case in allTheCases | orderBy: '+schedConf'">
-      <line id="caseLine" x1="{{case.schedConfX * 3}}" y1="{{($index + 1) * 100}}" x2="{{case.lastDateX * 3}}" y2="{{($index + 1) * 100}}"/>
-      <circle id="schedConf" cx="{{case.schedConfX * 3}}" cy="{{($index + 1) * 100}}" r="10"/>
-      <a href="#" ng-show={{case.joinAmendX}}><circle id="joinAmend" cx="{{case.joinAmendX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#" ng-show={{case.witDisclX}}><circle id="witnessDiscl" cx="{{case.witDisclX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#" ng-show={{case.expWitDisclX}}><circle id="expWitnessDiscl" cx="{{case.expWitDisclX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#" ng-show={{case.discoX}}><circle id="discovery" cx="{{case.discoX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#" ng-show={{case.plDiscoX}}><circle id="plDiscovery" cx="{{case.plDiscoX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#" ng-show={{case.defDiscoX}}><circle id="defDiscovery" cx="{{case.defDiscoX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#" ng-show={{case.motsX}}><circle id="motions" cx="{{case.motsX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#" ng-show={{case.discoMotsX}}><circle id="discoMotions" cx="{{case.discoMotsX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#" ng-show={{case.dispoMotsX}}><circle id="dispoMotions" cx="{{case.dispoMotsX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#" ng-show={{case.nonDispoMotsX}}><circle id="nonDispoMotions" cx="{{case.nonDispoMotsX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#" ng-show={{case.motsLimX}}><circle id="motsLimine" cx="{{case.motsLimX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#" ng-show={{case.medX}}><circle id="mediation" cx="{{case.medX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#" ng-show={{case.medSelectX}}><circle id="mediatorSelect" cx="{{case.medSelectX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#" ng-show={{case.pretConsultX}}><circle id="pretConsult" cx="{{case.pretConsultX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#" ng-show={{case.pretExchX}}><circle id="pretrialExchange" cx="{{case.pretExchX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#" ng-show={{case.pretOrdX}}><circle id="FPTO" cx="{{case.pretOrdX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#" ng-show={{case.pretConfX}}><circle id="FPTC" cx="{{case.pretConfX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#" ng-show={{case.trBrfX}}><circle id="trialBrief" cx="{{case.trBrfX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#" ng-show={{case.juryInstX}}><circle id="juryInst" cx="{{case.juryInstX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#" ng-show={{case.trWitX}}><circle id="trWitList" cx="{{case.trWitX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#" ng-show={{case.trExhX}}><circle id="trExhList" cx="{{case.trExhX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#" ng-show={{case.depoDesigX}}><circle id="depoDesig" cx="{{case.depoDesigX * 3}}" cy="{{($index + 1) * 100}}" r="5"/></a>
-      <a href="#" ng-show={{case.trBeginX}}><rect id="trialBox" x="{{case.trBeginX * 3}}" y="{{(($index + 1) * 100)-10}}" width="{{case.trLength * 3}}" height="20"/></a>
+
+    <!-- <g ng-repeat="case in allTheCases | orderBy: '+trial.beginDate'"> -->
+
+      <a href="#"><line id="caseLine" ng-attr-x1="{{case.schedConfX * 3}}" ng-attr-y1="{{($index + 1) * 115}}" ng-attr-x2="{{case.lastDateX * 3}}" ng-attr-y2="{{($index + 1) * 115}}"/></a>
+
+      <circle id="schedConf" ng-attr-cx="{{case.schedConfX * 3}}" ng-attr-cy="{{($index + 1) * 115}}" r="10"/>
+        <a href="#"><text id="caseName" ng-attr-x="{{((case.schedConfX) * 3) + 20}}" ng-attr-y="{{(($index + 1) * 115) + 25}}">{{case.name}}</text></a>
+
+      <a href="#" ng-if="case.joinAmendX"><circle id="joinAmend" ng-attr-cx="{{case.joinAmendX * 3}}" ng-attr-cy="{{($index + 1) * 115}}" r="7"/></a>
+        <a ng-mouseenter="showJoinAmendDate = true" ng-mouseleave="showJoinAmendDate = false" href="#" ng-show={{case.joinAmendX}}>
+          <text ng-hide="showJoinAmendDate" ng-attr-x="{{case.joinAmendX * 3}}" ng-attr-y="{{(($index + 1) * 115) - 10}}" ng-attr-transform="rotate(-45 {{case.joinAmendX * 3}}, {{(($index + 1) * 115) - 10}})" >Join/Amend</text>
+          <text ng-show="showJoinAmendDate" ng-attr-x="{{case.joinAmendX * 3}}" ng-attr-y="{{(($index + 1) * 115) - 10}}" ng-attr-transform="rotate(-45 {{case.joinAmendX * 3}}, {{(($index + 1) * 115) - 10}})" font-size="20">{{case.schedConf}}</text>
+        </a>
+
+
+      <a href="#" ng-show={{case.witDisclX}}><circle id="witnessDiscl" ng-attr-cx="{{case.witDisclX * 3}}" ng-attr-cy="{{($index + 1) * 115}}" r="7"/></a>
+        <a href="#" ng-show={{case.witDisclX}}><text ng-attr-x="{{case.witDisclX * 3}}" ng-attr-y="{{(($index + 1) * 115) - 10}}" ng-attr-transform="rotate(-45 {{case.witDisclX * 3}}, {{(($index + 1) * 115) - 10}})">Wit Discl</text></a>
+
+      <a href="#" ng-show={{case.expWitDisclX}}><circle id="expWitnessDiscl" ng-attr-cx="{{case.expWitDisclX * 3}}" ng-attr-cy="{{($index + 1) * 115}}" r="7"/></a>
+        <a href="#" ng-show={{case.expWitDisclX}}><text ng-attr-x="{{case.expWitDisclX * 3}}" ng-attr-y="{{(($index + 1) * 115) - 10}}" ng-attr-transform="rotate(-45 {{case.expWitDisclX * 3}}, {{(($index + 1) * 115) - 10}})">Exp Wit Discl</text></a>
+
+      <a href="#" ng-show={{case.discoX}}><circle id="discovery" ng-attr-cx="{{case.discoX * 3}}" ng-attr-cy="{{($index + 1) * 115}}" r="7"/></a>
+        <a href="#" ng-show={{case.discoX}}><text ng-attr-x="{{case.discoX * 3}}" ng-attr-y="{{(($index + 1) * 115) - 10}}" ng-attr-transform="rotate(-45 {{case.discoX * 3}}, {{(($index + 1) * 115) - 10}})">Discovery</text></a>
+
+      <a href="#" ng-show={{case.plDiscoX}}><circle id="plDiscovery" ng-attr-cx="{{case.plDiscoX * 3}}" ng-attr-cy="{{($index + 1) * 115}}" r="7"/></a>
+        <a href="#" ng-show={{case.plDiscoX}}><text ng-attr-x="{{case.plDiscoX * 3}}" ng-attr-y="{{(($index + 1) * 115) - 10}}" ng-attr-transform="rotate(-45 {{case.plDiscoX * 3}}, {{(($index + 1) * 115) - 10}})">Pl Disco</text></a>
+
+      <a href="#" ng-show={{case.defDiscoX}}><circle id="defDiscovery" ng-attr-cx="{{case.defDiscoX * 3}}" ng-attr-cy="{{($index + 1) * 115}}" r="7"/></a>
+        <a href="#" ng-show={{case.defDiscoX}}><text ng-attr-x="{{case.defDiscoX * 3}}" ng-attr-y="{{(($index + 1) * 115) - 10}}" ng-attr-transform="rotate(-45 {{case.defDiscoX * 3}}, {{(($index + 1) * 115) - 10}})">Def Disco</text></a>
+
+      <a href="#" ng-show={{case.motsX}}><circle id="motions" ng-attr-cx="{{case.motsX * 3}}" ng-attr-cy="{{($index + 1) * 115}}" r="7"/></a>
+        <a href="#" ng-show={{case.motsX}}><text ng-attr-x="{{case.motsX * 3}}" ng-attr-y="{{(($index + 1) * 115) - 10}}" ng-attr-transform="rotate(-45 {{case.motsX * 3}}, {{(($index + 1) * 115) - 10}})">Motions</text></a>
+
+      <a href="#" ng-show={{case.discoMotsX}}><circle id="discoMotions" ng-attr-cx="{{case.discoMotsX * 3}}" ng-attr-cy="{{($index + 1) * 115}}" r="7"/></a>
+        <a href="#" ng-show={{case.discoMotsX}}><text ng-attr-x="{{case.discoMotsX * 3}}" ng-attr-y="{{(($index + 1) * 115) - 10}}" ng-attr-transform="rotate(-45 {{case.discoMotsX * 3}}, {{(($index + 1) * 115) - 10}})">Disco Mots</text></a>
+
+      <a href="#" ng-show={{case.dispoMotsX}}><circle id="dispoMotions" ng-attr-cx="{{case.dispoMotsX * 3}}" ng-attr-cy="{{($index + 1) * 115}}" r="7"/></a>
+        <a href="#" ng-show={{case.dispoMotsX}}><text ng-attr-x="{{case.dispoMotsX * 3}}" ng-attr-y="{{(($index + 1) * 115) - 10}}" ng-attr-transform="rotate(-45 {{case.dispoMotsX * 3}}, {{(($index + 1) * 115) - 10}})">Dispos Mots</text></a>
+
+      <a href="#" ng-show={{case.nonDispoMotsX}}><circle id="nonDispoMotions" ng-attr-cx="{{case.nonDispoMotsX * 3}}" ng-attr-cy="{{($index + 1) * 115}}" r="7"/></a>
+        <a href="#" ng-show={{case.nonDispoMotsX}}><text ng-attr-x="{{case.nonDispoMotsX * 3}}" ng-attr-y="{{(($index + 1) * 115) - 10}}" ng-attr-transform="rotate(-45 {{case.nonDispoMotsX * 3}}, {{(($index + 1) * 115) - 10}})">Nondispos Mots</text></a>
+
+      <a href="#" ng-show={{case.motsLimX}}><circle id="motsLimine" ng-attr-cx="{{case.motsLimX * 3}}" ng-attr-cy="{{($index + 1) * 115}}" r="7"/></a>
+        <a href="#" ng-show={{case.motsLimX}}><text ng-attr-x="{{case.motsLimX * 3}}" ng-attr-y="{{(($index + 1) * 115) - 10}}" ng-attr-transform="rotate(-45 {{case.motsLimX * 3}}, {{(($index + 1) * 115) - 10}})">Mots Limine</text></a>
+
+      <a href="#" ng-show={{case.medX}}><circle id="mediation" ng-attr-cx="{{case.medX * 3}}" ng-attr-cy="{{($index + 1) * 115}}" r="7"/></a>
+        <a href="#" ng-show={{case.medX}}><text ng-attr-x="{{case.medX * 3}}" ng-attr-y="{{(($index + 1) * 115) - 10}}" ng-attr-transform="rotate(-45 {{case.medX * 3}}, {{(($index + 1) * 115) - 10}})">Mediation</text></a>
+
+      <a href="#" ng-show={{case.medSelectX}}><circle id="mediatorSelect" ng-attr-cx="{{case.medSelectX * 3}}" ng-attr-cy="{{($index + 1) * 115}}" r="7"/></a>
+        <a href="#" ng-show={{case.medSelectX}}><text ng-attr-x="{{case.medSelectX * 3}}" ng-attr-y="{{(($index + 1) * 115) - 10}}" ng-attr-transform="rotate(-45 {{case.medSelectX * 3}}, {{(($index + 1) * 115) - 10}})">Mediator Slct</text></a>
+
+      <a href="#" ng-show={{case.pretConsultX}}><circle id="pretConsult" ng-attr-cx="{{case.pretConsultX * 3}}" ng-attr-cy="{{($index + 1) * 115}}" r="7"/></a>
+        <a href="#" ng-show={{case.pretConsultX}}><text ng-attr-x="{{case.pretConsultX * 3}}" ng-attr-y="{{(($index + 1) * 115) - 10}}" ng-attr-transform="rotate(-45 {{case.pretConsultX * 3}}, {{(($index + 1) * 115) - 10}})">Pret Cons</text></a>
+
+      <a href="#" ng-show={{case.pretExchX}}><circle id="pretrialExchange" ng-attr-cx="{{case.pretExchX * 3}}" ng-attr-cy="{{($index + 1) * 115}}" r="7"/></a>
+        <a href="#" ng-show={{case.pretExchX}}><text ng-attr-x="{{case.pretExchX * 3}}" ng-attr-y="{{(($index + 1) * 115) - 10}}" ng-attr-transform="rotate(-45 {{case.pretExchX * 3}}, {{(($index + 1) * 115) - 10}})">Pret Exch</text></a>
+
+      <a href="#" ng-show={{case.pretOrdX}}><circle id="FPTO" ng-attr-cx="{{case.pretOrdX * 3}}" ng-attr-cy="{{($index + 1) * 115}}" r="7"/></a>
+        <a href="#" ng-show={{case.pretOrdX}}><text ng-attr-x="{{case.pretOrdX * 3}}" ng-attr-y="{{(($index + 1) * 115) - 10}}" ng-attr-transform="rotate(-45 {{case.pretOrdX * 3}}, {{(($index + 1) * 115) - 10}})">FPTO</text></a>
+
+      <a href="#" ng-show={{case.pretConfX}}><circle id="FPTC" ng-attr-cx="{{case.pretConfX * 3}}" ng-attr-cy="{{($index + 1) * 115}}" r="7"/></a>
+        <a href="#" ng-show={{case.pretConfX}}><text ng-attr-x="{{case.pretConfX * 3}}" ng-attr-y="{{(($index + 1) * 115) - 10}}" ng-attr-transform="rotate(-45 {{case.pretConfX * 3}}, {{(($index + 1) * 115) - 10}})">FPTC</text></a>
+
+      <a href="#" ng-show={{case.trBrfX}}><circle id="trialBrief" ng-attr-cx="{{case.trBrfX * 3}}" ng-attr-cy="{{($index + 1) * 115}}" r="7"/></a>
+        <a href="#" ng-show={{case.trBrfX}}><text ng-attr-x="{{case.trBrfX * 3}}" ng-attr-y="{{(($index + 1) * 115) - 10}}" ng-attr-transform="rotate(-45 {{case.trBrfX * 3}}, {{(($index + 1) * 115) - 10}})">Trial Brf</text></a>
+
+      <a href="#" ng-show={{case.juryInstX}}><circle id="juryInst" ng-attr-cx="{{case.juryInstX * 3}}" ng-attr-cy="{{($index + 1) * 115}}" r="7"/></a>
+        <a href="#" ng-show={{case.juryInstX}}><text ng-attr-x="{{case.juryInstX * 3}}" ng-attr-y="{{(($index + 1) * 115) - 10}}" ng-attr-transform="rotate(-45 {{case.juryInstX * 3}}, {{(($index + 1) * 115) - 10}})">Jury Inst</text></a>
+
+      <a href="#" ng-show={{case.trWitX}}><circle id="trWitList" ng-attr-cx="{{case.trWitX * 3}}" ng-attr-cy="{{($index + 1) * 115}}" r="7"/></a>
+        <a href="#" ng-show={{case.trWitX}}><text ng-attr-x="{{case.trWitX * 3}}" ng-attr-y="{{(($index + 1) * 115) - 10}}" ng-attr-transform="rotate(-45 {{case.trWitX * 3}}, {{(($index + 1) * 115) - 10}})">Trial Witn</text></a>
+
+      <a href="#" ng-show={{case.trExhX}}><circle id="trExhList" ng-attr-cx="{{case.trExhX * 3}}" ng-attr-cy="{{($index + 1) * 115}}" r="7"/></a>
+        <a href="#" ng-show={{case.trExhX}}><text ng-attr-x="{{case.trExhX * 3}}" ng-attr-y="{{(($index + 1) * 115) - 10}}" ng-attr-transform="rotate(-45 {{case.trExhX * 3}}, {{(($index + 1) * 115) - 10}})">Trial Exhibits</text></a>
+
+      <a href="#" ng-show={{case.depoDesigX}}><circle id="depoDesig" ng-attr-cx="{{case.depoDesigX * 3}}" ng-attr-cy="{{($index + 1) * 115}}" r="7"/></a>
+        <a href="#" ng-show={{case.depoDesigX}}><text ng-attr-x="{{case.depoDesigX * 3}}" ng-attr-y="{{(($index + 1) * 115) - 10}}" ng-attr-transform="rotate(-45 {{case.depoDesigX * 3}}, {{(($index + 1) * 115) - 10}})">Depo Desig</text></a>
+
+      <a href="#" ng-show={{case.trBeginX}}><rect id="trialBox" ng-attr-x="{{case.trBeginX * 3}}" ng-attr-y="{{(($index + 1) * 115)-10}}" ng-attr-width="{{case.trLength * 3}}" height="20"/></a>
+        <a href="#" ng-show={{case.trBeginX}}><text ng-attr-x="{{(case.trBeginX * 3)}}" ng-attr-y="{{(($index + 1) * 115)-15}}">Trial</text></a>
 
     </g>
+  </svg>
+</div>
 
     <!-- <div ng-repeat= "case in cases | orderBy: '+schedConf'"> -->
       <!-- <line id="caseLine" x1="120" y1="100" x2="1095" y2="100"/>
         <circle id="schedConf" cx="120" cy="100" r="10"/>
           <a href="#"><text x="10" y="103">Lilo v. Stitch</text></a>
-        <a href="#"><circle id="joinAmend" cx="150" cy="100" r="5"/></a>
+        <a href="#"><circle id="joinAmend" cx="150" cy="100" r="7"/></a>
           <a href="#"><text x="150" y="90" transform="rotate(-45 150, 90)">Join/Amend</text></a>
         <a href="#"><circle id="witnessDiscl" cx="450" cy="100" r="5"/></a>
           <a href="#"><text x="450" y="90" transform="rotate(-45 450, 90)">Wit Discl</text></a>
@@ -184,7 +242,3 @@
           <text x="990" y="685" transform="rotate(-45 990, 685)">Nov</text>
         <line id="blackLine" x1="1080" y1="690" x2="1080" y2="700"/>
           <text x="1080" y="685" transform="rotate(-45 1080, 685)">Dec</text> -->
-
-  </svg>
-
-</div>
