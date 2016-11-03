@@ -4,70 +4,92 @@ angular.module("bigPicture")
   this.newCase = function(){
     return {
     events: [{
-      title: "Join/Amend Deadline"
+      title: "Join/Amend Deadline",
+      nickname: "Join/Amend"
     },
     {
-      title: "Witness Disclosure Deadline"
+      title: "Witness Disclosure Deadline",
+      nickname: "Wit. Discl."
     },
     {
-      title: "Exp. Witness Disclosure Deadline"
+      title: "Exp. Witness Disclosure Deadline",
+      nickname: "Wit. Discl."
     },
     {
-      title: "Discovery Deadline"
+      title: "Discovery Deadline",
+      nickname: "Discovery"
     },
     {
-      title: "Plaintiff Discovery Deadline"
+      title: "Plaintiff Discovery Deadline",
+      nickname: "Pl. Discovery"
     },
     {
-      title: "Defendant Discovery Deadline"
+      title: "Defendant Discovery Deadline",
+      nickname: "Def. Discovery"
     },
     {
-      title: "Motions Deadline"
+      title: "Motions Deadline",
+      nickname: "Motions"
     },
     {
-      title: "Discovery Motions Deadline"
+      title: "Discovery Motions Deadline",
+      nickname: "Disco. Mots."
     },
     {
-      title: "Dispositive Mots. Deadline"
+      title: "Dispositive Mots. Deadline",
+      nickname: "Dispo. Mots."
     },
     {
-      title: "Non-Dispositive Mots. Deadline"
+      title: "Non-Dispositive Mots. Deadline",
+      nickname: "Non-Dispo. Mots."
     },
     {
-      title: "Motions in Limine Deadline"
+      title: "Motions in Limine Deadline",
+      nickname: "Mots. Lim."
     },
     {
-      title: "Mediation Deadline"
+      title: "Mediation Deadline",
+      nickname: "Mediation"
     },
     {
-      title: "Mediator Select Deadline"
+      title: "Mediator Select Deadline",
+      nickname: "Mediator Sel."
     },
     {
-      title: "Pretrial Consultation Deadline"
+      title: "Pretrial Consultation Deadline",
+      nickname: "Pret. Consult."
     },
     {
-      title: "Pretrial Exchange Deadline"
+      title: "Pretrial Exchange Deadline",
+      nickname: "Pret. Exch."
     },
     {
-      title: "Final Pret. Order Deadline"
+      title: "Final Pret. Order Deadline",
+      nickname: "FPTO"
     },
     {
-      title: "Final Pret. Conference"
+      title: "Final Pret. Conference",
+      nickname: "FPTO"
     },
     {
-      title: "Trial Brief Deadline"
+      title: "Trial Brief Deadline",
+      nickname: "Trial Brief"
     },
     {
-      title: "Jury Instructions Deadline"
+      title: "Jury Instructions Deadline",
+      nickname: "Jury Inst."
     },
     {
-      title: "Trial Witn. List Deadline"
+      title: "Trial Witn. List Deadline",
+      nickname: "Tr. Witn. List"
     },
     {
-      title: "Trial Exh. List Deadline"
+      title: "Trial Exh. List Deadline",
+      nickname: "Tr. Exh. List"
     },
     {
-      title: "Deposition Desig. Deadline"
+      title: "Deposition Desig. Deadline",
+      nickname: "Depo. Desig."
     }
   ]
   }

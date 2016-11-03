@@ -28,12 +28,12 @@ angular.module("bigPicture", ["ui.router"])
     .state("home", {
       url: "/",
       templateUrl: "./templates/home.html",
-      controller: "mainCtrl"
+      controller: "mainCtrl" //may fix loading problem if removed
     })
     .state("detail", {
       url: "/detail",
       templateUrl: "./templates/detail.html",
-      controller: "mainCtrl"
+      controller: "mainCtrl" //may fix loading problem if removed
     })
 
     $urlRouterProvider.otherwise("/");

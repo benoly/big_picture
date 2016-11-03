@@ -8,7 +8,7 @@ var caseSchema = new mongoose.Schema({
   causeNo: String,
   opposingCounsel: String,
   clientName: String,
-  clientEmail: String, 
+  clientEmail: String,
   clientNumber:String,
   caseDesc: String,
   schedConf: Date,
@@ -19,6 +19,7 @@ var caseSchema = new mongoose.Schema({
   },
   events: [{
     title: String,
+    nickname: String,
     date: Date,
     description: String
   }]
