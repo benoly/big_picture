@@ -6,21 +6,45 @@ body {
 .header {
   height: 50px;
   width: 100vw;
-  background-color: blue;
+  background-color: White;
   position: fixed;
 }
 
 .header h2 {
   text-align: center;
-  color: white;
-  margin-top: 10px;
+  color: Black;
+  margin-top: 3px;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 34px;
+  font-weight: bold;
+  letter-spacing: 2px;
 }
 
 #addNew {
+  position:absolute;
+  top:12px;
+  right: 30px;
+  padding:5px;
+  background-color: White;
+  border: 2px solid Black;
+  color: Black;
+  text-decoration:none;
+}
+
+#addNew:hover {
+  font-weight: bold;
+}
+
+#addNew:active {
+  color: Black;
+}
+
+
+/*#sortSelector {
   position: absolute;
   top: 17px;
-  right: 30px;
-}
+  right: 120px;
+}*/
 
 /*Modal*/
 .modal{
@@ -96,17 +120,18 @@ body {
 
 #caseLine {
   stroke:black;
-  stroke-width:4
+  stroke-width:3
 }
 
 #schedConf {
   stroke:black;
-  stroke-width:4;
-  fill:white;
+  stroke-width:3;
+  fill:green;
 }
 
 #caseName {
-  text-decoration: underline
+  text-decoration: underline;
+  /*stroke: black;*/
 }
 
 #event {

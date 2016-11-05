@@ -69,7 +69,7 @@ angular.module("bigPicture")
     },
     {
       title: "Final Pret. Conference",
-      nickname: "FPTO"
+      nickname: "FPTC"
     },
     {
       title: "Trial Brief Deadline",

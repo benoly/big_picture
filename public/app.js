@@ -5,6 +5,8 @@ angular.module("bigPicture", ["ui.router"])
     templateUrl:"./templates/addNewModal.html",
 
     controller: function($scope){
+
+      //addNew modal//
       var modal = document.getElementById('addNewModal');
       var btn = document.getElementById("addNew");
       var span = document.getElementsByClassName("close")[0];
@@ -19,6 +21,8 @@ angular.module("bigPicture", ["ui.router"])
               modal.style.display = "none";
           }
       }
+
+
     }
   }
 })

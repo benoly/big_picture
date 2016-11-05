@@ -36,27 +36,35 @@ $scope.getCases = function(){
           }
         }
 
-        $scope.todaysDateX = moment().diff(moment($scope.beginDate), 'days');
+        $scope.todaysDateX = (moment().diff(moment($scope.beginDate), 'days')) * 2.5 + 10;
 
-        document.body.scrollLeft = ($scope.todaysDateX * 3) - (window.outerWidth/2);
+        $scope.latestEndDate = $scope.todaysDate;
+
+        document.body.scrollLeft = ($scope.todaysDateX) - (window.outerWidth/2);
 
         for (var k = 0; k < $scope.allTheCases.length; k++) {
 
-          $scope.allTheCases[k].schedConfX = moment($scope.allTheCases[k].schedConf).diff(moment($scope.beginDate),'days');
+          $scope.allTheCases[k].schedConfX = moment($scope.allTheCases[k].schedConf).diff(moment($scope.beginDate),'days') * 2.5 + 10;
 
           $scope.allTheCases[k].lineEndDate = $scope.allTheCases[k].schedConf;
+          console.log($scope.allTheCases[k].lineEndDate);
 
           if($scope.allTheCases[k].trial){
             $scope.allTheCases[k].trBeginX =
-            moment($scope.allTheCases[k].trial.beginDate).diff(moment($scope.beginDate), 'days');
+            moment($scope.allTheCases[k].trial.beginDate).diff(moment($scope.beginDate), 'days') * 2.5 + 10;
             $scope.allTheCases[k].trLength =
-            moment($scope.allTheCases[k].trial.endDate).diff(moment($scope.allTheCases[k].trial.beginDate), 'days');
+            moment($scope.allTheCases[k].trial.endDate).diff(moment($scope.allTheCases[k].trial.beginDate), 'days') * 2.5;
             $scope.allTheCases[k].lineEndDate = $scope.allTheCases[k].trial.beginDate;
+            console.log($scope.allTheCases[k].lineEndDate);
             $scope.allTheCases[k].trial.dateDisplay = moment($scope.allTheCases[k].trial.beginDate).format('L') + " to " + moment($scope.allTheCases[k].trial.endDate).format('L');
 
             if(moment($scope.allTheCases[k].trial.beginDate) > moment($scope.todaysDate)){
               $scope.allTheCases[k].trial.daysToGo = "(" + moment($scope.allTheCases[k].trial.beginDate).diff(moment($scope.todaysDate), 'days') + " days away)";
             };
+
+            if(moment($scope.allTheCases[k].trial.endDate) > moment($scope.latestEndDate)){
+              $scope.latestEndDate = $scope.allTheCases[k].trial.endDate;
+            }
 
           }
 
@@ -68,15 +76,25 @@ $scope.getCases = function(){
               $scope.allTheCases[k].events[l].daysToGo = "(" + moment($scope.allTheCases[k].events[l].date).diff(moment($scope.todaysDate), 'days') + " days away)";
             };
 
-            $scope.allTheCases[k].events[l].positionX = moment($scope.allTheCases[k].events[l].date).diff(moment($scope.beginDate),'days');
+            $scope.allTheCases[k].events[l].positionX = moment($scope.allTheCases[k].events[l].date).diff(moment($scope.beginDate),'days') * 2.5 + 10;
+
             if(moment($scope.allTheCases[k].events[l].date) > moment($scope.allTheCases[k].lineEndDate)){
               $scope.allTheCases[k].lineEndDate = $scope.allTheCases[k].events[l].date;
+              console.log($scope.allTheCases[k].lineEndDate);
             }
 
-            $scope.allTheCases[k].lastDateX =
-            moment($scope.allTheCases[k].lineEndDate).diff(moment($scope.beginDate), 'days');
-
+            if(moment($scope.allTheCases[k].lineEndDate) > moment($scope.latestEndDate)){
+              $scope.latestEndDate = $scope.allTheCases[k].lineEndDate;
+            }
         }
+        $scope.allTheCases[k].lastDateX =
+        moment($scope.allTheCases[k].lineEndDate).diff(moment($scope.beginDate), 'days') * 2.5 + 10;
+        console.log($scope.allTheCases[k].lastDateX);
+
+        $scope.displayWidthX =
+        (moment($scope.latestEndDate).diff(moment($scope.beginDate), 'days') * 2.5) + 200;
+
+        $scope.displayHeightY = ($scope.allTheCases.length * 115) + 100;
       }
     });
   };
