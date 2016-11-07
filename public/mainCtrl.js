@@ -1,4 +1,32 @@
 angular.module("bigPicture")
+
+//***************
+.directive("moreInfo", function(){
+  return {
+    templateUrl:"./templates/moreInfoModal.html",
+
+    controller: function($scope){
+
+      //addNew modal//
+      var modal = document.getElementById('moreInfoModal');
+      var btn = document.getElementById("moreInfo");
+      var span = document.getElementsByClassName("close")[0];
+      btn.onclick = function() {
+          modal.style.display = "block";
+      }
+      span.onclick = function() {
+          modal.style.display = "none";
+      }
+      window.onclick = function(event) {
+          if (event.target == modal) {
+              modal.style.display = "none";
+          }
+      }
+    }
+  }
+})
+//***************
+
 .controller("mainCtrl", function($scope, mainServ){
 
 $scope.newCase = mainServ.newCase();

@@ -21,8 +21,6 @@ angular.module("bigPicture", ["ui.router"])
               modal.style.display = "none";
           }
       }
-
-
     }
   }
 })
