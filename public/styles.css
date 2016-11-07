@@ -131,6 +131,7 @@ body {
 
 #caseName {
   text-decoration: underline;
+  font-family: sans-serif;
   /*stroke: black;*/
 }
 

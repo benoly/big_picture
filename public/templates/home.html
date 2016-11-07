@@ -16,29 +16,29 @@
 
         <a href="#" ng-mouseenter="showDate = true" ng-mouseleave="showDate = false">
           <circle id="event" ng-attr-cx="{{oneEvent.positionX}}" ng-attr-cy="{{($parent.$index + 1) * 115}}" r="7"/>
-          <text ng-show="showDate" ng-attr-x="{{oneEvent.positionX}}" ng-attr-y="{{(($parent.$index + 1) * 115) + 23}}" font-size="15">{{oneEvent.date}} {{oneEvent.daysToGo}}</text>
+          <text ng-show="showDate" ng-attr-x="{{oneEvent.positionX}}" ng-attr-y="{{(($parent.$index + 1) * 115) + 23}}" font-size="14" font-family="sans-serif">{{oneEvent.date}} {{oneEvent.daysToGoDisplay}}</text>
         </a>
           <a href="#" ng-mouseenter="showDate = true" ng-mouseleave="showDate = false">
-            <text ng-attr-x="{{oneEvent.positionX}}" ng-attr-y="{{(($parent.$index + 1) * 115) - 10}}" ng-attr-transform="rotate(-45 {{oneEvent.positionX}}, {{(($parent.$index + 1) * 115) - 10}})">{{oneEvent.nickname}}</text>
+            <text ng-attr-x="{{oneEvent.positionX}}" ng-attr-y="{{(($parent.$index + 1) * 115) - 10}}" ng-attr-transform="rotate(-45 {{oneEvent.positionX}}, {{(($parent.$index + 1) * 115) - 10}})" font-size="14" font-family="sans-serif">{{oneEvent.nickname}}</text>
           </a>
       </g>
 
       <a ng-if="case.trial" href="#" ng-mouseenter="showTrialDate = true" ng-mouseleave="showTrialDate = false">
         <rect id="trialBox" ng-attr-x="{{case.trBeginX}}" ng-attr-y="{{(($index + 1) * 115)-10}}" ng-attr-width="{{case.trLength}}" height="20"/>
-        <text ng-show="showTrialDate" ng-attr-x="{{case.trBeginX}}" ng-attr-y="{{(($index + 1) * 115) + 25}}" font-size="15">{{case.trial.dateDisplay}}</text>
-        <text ng-show="showTrialDate" ng-attr-x="{{case.trBeginX}}" ng-attr-y="{{(($index + 1) * 115) + 40}}" font-size="15">{{case.trial.daysToGo}}</text>
+        <text ng-show="showTrialDate" ng-attr-x="{{case.trBeginX}}" ng-attr-y="{{(($index + 1) * 115) + 25}}" font-size="14" font-family="sans-serif">{{case.trial.dateDisplay}}</text>
+        <text ng-show="showTrialDate" ng-attr-x="{{case.trBeginX}}" ng-attr-y="{{(($index + 1) * 115) + 40}}" font-size="14" font-family="sans-serif">{{case.trial.daysToGoDisplay}}</text>
       </a>
         <a ng-if="case.trial" href="#" ng-mouseenter="showTrialDate = true" ng-mouseleave="showTrialDate = false">
-          <text ng-attr-x="{{(case.trBeginX)}}" ng-attr-y="{{(($index + 1) * 115)-15}}">Trial</text>
-          <text ng-show="showTrialDate" ng-attr-x="{{case.trBeginX}}" ng-attr-y="{{(($index + 1) * 115) + 25}}" font-size="15">{{case.trial.dateDisplay}}</text>
-          <text ng-show="showTrialDate" ng-attr-x="{{case.trBeginX}}" ng-attr-y="{{(($index + 1) * 115) + 40}}" font-size="15">{{case.trial.daysToGo}}</text>
+          <text ng-attr-x="{{(case.trBeginX)}}" ng-attr-y="{{(($index + 1) * 115)-15}}" font-size="14" font-family="sans-serif">Trial</text>
+          <text ng-show="showTrialDate" ng-attr-x="{{case.trBeginX}}" ng-attr-y="{{(($index + 1) * 115) + 25}}" font-size="14" font-family="sans-serif">{{case.trial.dateDisplay}}</text>
+          <text ng-show="showTrialDate" ng-attr-x="{{case.trBeginX}}" ng-attr-y="{{(($index + 1) * 115) + 40}}" font-size="14" font-family="sans-serif">{{case.trial.daysToGoDisplay}}</text>
         </a>
 
     </g>
 
     <line id="dateLine" ng-attr-x1="{{todaysDateX}}" y1="25" ng-attr-x2="{{todaysDateX}}" ng-attr-y2="{{displayHeightY}}"/>
-      <text ng-attr-x="{{(todaysDateX) - 10}}" y="0" font-size="20">Today</text></a>
-      <text ng-attr-x="{{(todaysDateX) - 10}}" y="20" font-size="20">{{todaysDate}}</text></a>
+      <text ng-attr-x="{{(todaysDateX) - 10}}" y="0" font-size="20" font-family="sans-serif">Today</text></a>
+      <text ng-attr-x="{{(todaysDateX) - 10}}" y="20" font-size="20" font-family="sans-serif">{{todaysDate}}</text></a>
 
   </svg>
 </div>

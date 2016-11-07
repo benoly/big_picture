@@ -1,32 +1,4 @@
 angular.module("bigPicture")
-
-//***************
-.directive("moreInfo", function(){
-  return {
-    templateUrl:"./templates/moreInfoModal.html",
-
-    controller: function($scope){
-
-      //addNew modal//
-      var modal = document.getElementById('moreInfoModal');
-      var btn = document.getElementById("moreInfo");
-      var span = document.getElementsByClassName("close")[0];
-      btn.onclick = function() {
-          modal.style.display = "block";
-      }
-      span.onclick = function() {
-          modal.style.display = "none";
-      }
-      window.onclick = function(event) {
-          if (event.target == modal) {
-              modal.style.display = "none";
-          }
-      }
-    }
-  }
-})
-//***************
-
 .controller("mainCtrl", function($scope, mainServ){
 
 $scope.newCase = mainServ.newCase();
@@ -86,8 +58,17 @@ $scope.getCases = function(){
             console.log($scope.allTheCases[k].lineEndDate);
             $scope.allTheCases[k].trial.dateDisplay = moment($scope.allTheCases[k].trial.beginDate).format('L') + " to " + moment($scope.allTheCases[k].trial.endDate).format('L');
 
-            if(moment($scope.allTheCases[k].trial.beginDate) > moment($scope.todaysDate)){
-              $scope.allTheCases[k].trial.daysToGo = "(" + moment($scope.allTheCases[k].trial.beginDate).diff(moment($scope.todaysDate), 'days') + " days away)";
+            if(moment($scope.allTheCases[k].trial.beginDate) >= moment($scope.todaysDate)){
+              $scope.allTheCases[k].trial.daysToGo = moment($scope.allTheCases[k].trial.beginDate).diff(moment($scope.todaysDate), 'days');
+              if($scope.allTheCases[k].trial.daysToGo == 0){
+                $scope.allTheCases[k].trial.daysToGoDisplay = "(Today)";
+              };
+              if($scope.allTheCases[k].trial.daysToGo == 1){
+                $scope.allTheCases[k].trial.daysToGoDisplay = "(" + $scope.allTheCases[k].trial.daysToGo + " day away)";
+              };
+              if($scope.allTheCases[k].trial.daysToGo > 1){
+                $scope.allTheCases[k].trial.daysToGoDisplay = "(" + $scope.allTheCases[k].trial.daysToGo + " days away)";
+              };
             };
 
             if(moment($scope.allTheCases[k].trial.endDate) > moment($scope.latestEndDate)){
@@ -100,8 +81,21 @@ $scope.getCases = function(){
 
             $scope.allTheCases[k].events[l].date = moment($scope.allTheCases[k].events[l].date).format('L');
 
-            if(moment($scope.allTheCases[k].events[l].date) > moment($scope.todaysDate)){
-              $scope.allTheCases[k].events[l].daysToGo = "(" + moment($scope.allTheCases[k].events[l].date).diff(moment($scope.todaysDate), 'days') + " days away)";
+            if(moment($scope.allTheCases[k].events[l].date) >= moment($scope.todaysDate)){
+              $scope.allTheCases[k].events[l].daysToGo = moment($scope.allTheCases[k].events[l].date).diff(moment($scope.todaysDate), 'days');
+              if($scope.allTheCases[k].events[l].daysToGo == 0){
+                $scope.allTheCases[k].events[l].daysToGoDisplay = "(Today)";
+              };
+              if($scope.allTheCases[k].events[l].daysToGo == 1){
+                $scope.allTheCases[k].events[l].daysToGoDisplay = "(" + $scope.allTheCases[k].events[l].daysToGo + " day away)";
+              };
+              if($scope.allTheCases[k].events[l].daysToGo == 1){
+                $scope.allTheCases[k].events[l].daysToGoDisplay = "(" + $scope.allTheCases[k].events[l].daysToGo + " day away)";
+              };
+              if($scope.allTheCases[k].events[l].daysToGo > 1){
+                $scope.allTheCases[k].events[l].daysToGoDisplay = "(" + $scope.allTheCases[k].events[l].daysToGo + " days away)";
+              };
+              // $scope.allTheCases[k].events[l].daysToGo = "(" + moment($scope.allTheCases[k].events[l].date).diff(moment($scope.todaysDate), 'days') + " days away)";
             };
 
             $scope.allTheCases[k].events[l].positionX = moment($scope.allTheCases[k].events[l].date).diff(moment($scope.beginDate),'days') * 2.5 + 10;
