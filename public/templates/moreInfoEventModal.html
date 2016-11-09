@@ -1,0 +1,8 @@
+<div ng-show="showMoreEventInfo" class="popupmodal">
+  <div class="modal-content">
+    <h2>Title: {{modalEvent.title}}</h2>
+    <h3>Date: {{modalEvent.date}}</h3>
+    <h3>Description: <span ng-if="!modalEvent.description">None</span>{{modalEvent.description}}</h3>
+    <button ng-click="showMoreEventInfo=false">Close</button>
+  </div>
+</div>

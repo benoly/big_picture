@@ -1,0 +1,16 @@
+<div ng-show="showMoreCaseInfo" class="popupmodal">
+  <div class="modal-content">
+    <h2 id="modalCaseName">{{modalEvent.name}}</h2>
+    <h3 ng-if="modalEvent.court">Court:  {{modalEvent.court}}</h3>
+    <h3 ng-if="modalEvent.judge">Judge:  {{modalEvent.judge}}</h3>
+    <h3 ng-if="modalEvent.causeNo">Cause No.:  {{modalEvent.causeNo}}</h3>
+    <h3 ng-if="modalEvent.assignedCounsel">Assigned Counsel:  {{modalEvent.assignedCounsel}}</h3>
+    <h3 ng-if="modalEvent.opposingCounsel">Opposing Counsel:  {{modalEvent.opposingCounsel}}</h3>
+    <h3 ng-if="modalEvent.clientName">Client Contact:  {{modalEvent.clientName}}</h3>
+    <h3 ng-if="modalEvent.clientEmail">Client Email:  {{modalEvent.clientEmail}}</h3>
+    <h3 ng-if="modalEvent.clientNumber">Client Phone:  {{modalEvent.clientNumber}}</h3>
+    <h3 ng-if="modalEvent.caseDesc">Case Description:  {{modalEvent.caseDesc}}</h3>
+    <button ng-click="showMoreCaseInfo=false">Close</button>
+    <edit-case-modal></edit-case-modal>
+  </div>
+</div>

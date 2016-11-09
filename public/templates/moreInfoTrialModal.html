@@ -1,0 +1,8 @@
+<div ng-show="showMoreTrialInfo" class="popupmodal">
+  <div class="modal-content">
+    <h2>Title: Trial</h2>
+    <h3>Date: {{modalEvent.trial.beginDate}} to {{modalEvent.trial.endDate}}</h3>
+    <h3>Description: <span ng-if="!modalEvent.trial.description">None</span>{{modalEvent.trial.description}}</h3>
+    <button ng-click="showMoreTrialInfo=false">Close</button>
+  </div>
+</div>

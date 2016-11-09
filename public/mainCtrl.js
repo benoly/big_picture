@@ -47,16 +47,20 @@ $scope.getCases = function(){
           $scope.allTheCases[k].schedConfX = moment($scope.allTheCases[k].schedConf).diff(moment($scope.beginDate),'days') * 2.5 + 10;
 
           $scope.allTheCases[k].lineEndDate = $scope.allTheCases[k].schedConf;
-          console.log($scope.allTheCases[k].lineEndDate);
+
+          $scope.allTheCases[k].latestEndDateForCase = $scope.allTheCases[k].schedConf;
 
           if($scope.allTheCases[k].trial){
+            $scope.allTheCases[k].trial.beginDate = moment($scope.allTheCases[k].trial.beginDate).format('L');
+            $scope.allTheCases[k].trial.endDate = moment($scope.allTheCases[k].trial.endDate).format('L');
+            $scope.allTheCases[k].latestEndDateForCase = $scope.allTheCases[k].trial.endDate;
             $scope.allTheCases[k].trBeginX =
             moment($scope.allTheCases[k].trial.beginDate).diff(moment($scope.beginDate), 'days') * 2.5 + 10;
             $scope.allTheCases[k].trLength =
             moment($scope.allTheCases[k].trial.endDate).diff(moment($scope.allTheCases[k].trial.beginDate), 'days') * 2.5;
             $scope.allTheCases[k].lineEndDate = $scope.allTheCases[k].trial.beginDate;
-            console.log($scope.allTheCases[k].lineEndDate);
-            $scope.allTheCases[k].trial.dateDisplay = moment($scope.allTheCases[k].trial.beginDate).format('L') + " to " + moment($scope.allTheCases[k].trial.endDate).format('L');
+            // console.log($scope.allTheCases[k].lineEndDate);
+            $scope.allTheCases[k].trial.dateDisplay = $scope.allTheCases[k].trial.beginDate + " to " + $scope.allTheCases[k].trial.endDate;
 
             if(moment($scope.allTheCases[k].trial.beginDate) >= moment($scope.todaysDate)){
               $scope.allTheCases[k].trial.daysToGo = moment($scope.allTheCases[k].trial.beginDate).diff(moment($scope.todaysDate), 'days');
@@ -102,7 +106,8 @@ $scope.getCases = function(){
 
             if(moment($scope.allTheCases[k].events[l].date) > moment($scope.allTheCases[k].lineEndDate)){
               $scope.allTheCases[k].lineEndDate = $scope.allTheCases[k].events[l].date;
-              console.log($scope.allTheCases[k].lineEndDate);
+              $scope.allTheCases[k].latestEndDateForCase = $scope.allTheCases[k].lineEndDate;
+              // console.log($scope.allTheCases[k].lineEndDate);
             }
 
             if(moment($scope.allTheCases[k].lineEndDate) > moment($scope.latestEndDate)){
@@ -111,15 +116,63 @@ $scope.getCases = function(){
         }
         $scope.allTheCases[k].lastDateX =
         moment($scope.allTheCases[k].lineEndDate).diff(moment($scope.beginDate), 'days') * 2.5 + 10;
-        console.log($scope.allTheCases[k].lastDateX);
+        // console.log($scope.allTheCases[k].lastDateX);
 
         $scope.displayWidthX =
         (moment($scope.latestEndDate).diff(moment($scope.beginDate), 'days') * 2.5) + 200;
 
         $scope.displayHeightY = ($scope.allTheCases.length * 115) + 100;
+
+        $scope.allTheCases[k].latestDateX =
+        moment($scope.allTheCases[k].latestEndDateForCase).diff(moment($scope.beginDate), 'days') * 2.5 + 10;
+
       }
     });
   };
 
+  // $scope.putTheCase = function(caseToPut){
+  //     console.log(caseToPut);
+  //
+  //     mainServ.changeTheCase(caseToPut)
+  //       .then(function(response){
+  //         $scope.getCases();
+  //       });
+  //   };
+
+  $scope.deleteTheCase = function(caseToRemove){
+    mainServ.destroyTheCase(caseToRemove)
+      .then(function(response){
+        $scope.getCases();
+      });
+  };
+
   $scope.getCases();
+
+  $scope.showEventInfo = function(event){
+    $scope.showMoreEventInfo = true;
+    $scope.modalEvent = event;
+    // console.log($scope.modalEvent);
+  }
+
+  $scope.showTrialInfo = function(event){
+    $scope.showMoreTrialInfo = true;
+    $scope.modalEvent = event;
+    // console.log($scope.modalEvent);
+  }
+
+  $scope.showCaseInfo = function(event){
+    $scope.showMoreCaseInfo = true;
+    $scope.modalEvent = event;
+  }
+
+  $scope.showEditInfo = function(event){
+    $scope.showMoreEditInfo = true;
+    $scope.modalEvent = event;
+  }
+
+  $scope.showDeleteModal = function(event){
+    $scope.showMoreDeleteInfo = true;
+    $scope.modalEvent = event;
+  }
+
 });

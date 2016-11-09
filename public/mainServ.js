@@ -114,4 +114,25 @@ angular.module("bigPicture")
   })
 };
 
+  this.changeTheCase = function(caseToChange){
+  console.log(caseToChange);
+  return $http({
+    method: "PUT",
+    url: "/case/" + caseToChange._id,
+    data: caseToChange
+  }).then(function(response){
+    console.log(response)
+    return response;
+  })
+};
+
+  this.destroyTheCase = function(caseToDestroy){
+  return $http({
+    method: "DELETE",
+    url: "/case/" + caseToDestroy._id,
+  }).then(function(response){
+    return response;
+  })
+};
+
 });

@@ -6,6 +6,7 @@ var caseSchema = new mongoose.Schema({
   court: String,
   judge: String,
   causeNo: String,
+  assignedCounsel: String,
   opposingCounsel: String,
   clientName: String,
   clientEmail: String,

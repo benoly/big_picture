@@ -24,6 +24,40 @@ angular.module("bigPicture", ["ui.router"])
     }
   }
 })
+.directive("moreInfoEventModal", function(){
+  return {
+    templateUrl: "./templates/moreInfoEventModal.html",
+    controller: "mainCtrl"
+  }
+})
+
+.directive("moreInfoTrialModal", function(){
+  return {
+    templateUrl: "./templates/moreInfoTrialModal.html",
+    controller: "mainCtrl"
+  }
+})
+
+.directive("moreInfoCaseModal", function(){
+  return {
+    templateUrl: "./templates/moreInfoCaseModal.html",
+    controller: "mainCtrl"
+  }
+})
+
+.directive("editCaseModal", function(){
+  return {
+    templateUrl: "./templates/editCaseModal.html",
+    controller: "mainCtrl"
+  }
+})
+
+.directive("deleteCaseModal", function(){
+  return {
+    templateUrl: "./templates/deleteCaseModal.html",
+    controller: "mainCtrl"
+  }
+})
 
 .config(function($urlRouterProvider, $stateProvider){
   $stateProvider

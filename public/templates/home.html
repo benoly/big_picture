@@ -7,29 +7,35 @@
 
     <!-- <g ng-repeat="case in allTheCases | orderBy: '+trial.beginDate'"> -->
 
-      <a href="#"><line id="caseLine" ng-attr-x1="{{case.schedConfX}}" ng-attr-y1="{{($index + 1) * 115}}" ng-attr-x2="{{case.lastDateX}}" ng-attr-y2="{{($index + 1) * 115}}"/></a>
+      <a><line id="caseLine" ng-attr-x1="{{case.schedConfX}}" ng-attr-y1="{{($index + 1) * 115}}" ng-attr-x2="{{case.lastDateX}}" ng-attr-y2="{{($index + 1) * 115}}"/></a>
 
       <circle id="schedConf" ng-attr-cx="{{case.schedConfX}}" ng-attr-cy="{{($index + 1) * 115}}" r="10"/>
-        <a href="#"><text id="caseName" ng-attr-x="{{case.schedConfX + 20}}" ng-attr-y="{{(($index + 1) * 115) + 25}}" font-size="20">{{case.name}}</text></a>
+        <a><text id="caseName" ng-click="showCaseInfo(case)" ng-attr-x="{{case.schedConfX + 20}}" ng-attr-y="{{(($index + 1) * 115) + 25}}" font-size="20">{{case.name}}</text></a>
+
+        <a><image id="editPencil" ng-click="showEditInfo(case)" xlink:href="64px-Black_pencil.svg.png" ng-attr-x="{{(case.schedConfX + 20)}}" ng-attr-y="{{(($index + 1) * 115) + 30}}"></a>
+
+        <a><image id="deleteX" ng-click="showDeleteModal(case)"  xlink:href="x_delete.png" ng-attr-x="{{(case.schedConfX + 20) + 30}}" ng-attr-y="{{(($index + 1) * 115) + 32}}"></a>
+
+        <!-- <a><image id="magnifyingGlass" xlink:href="64px-Magnifying_glass_icon.svg.png" ng-attr-x="{{(case.schedConfX + 20) + 25}}" ng-attr-y="{{(($index + 1) * 115) + 30}}"/></a> -->
 
       <g ng-repeat="oneEvent in case.events">
 
-        <a href="#" ng-mouseenter="showDate = true" ng-mouseleave="showDate = false">
-          <circle id="event" ng-attr-cx="{{oneEvent.positionX}}" ng-attr-cy="{{($parent.$index + 1) * 115}}" r="7"/>
+        <a ng-mouseenter="showDate = true" ng-mouseleave="showDate = false">
+          <circle id="event" ng-click="showEventInfo(oneEvent)" ng-attr-cx="{{oneEvent.positionX}}" ng-attr-cy="{{($parent.$index + 1) * 115}}" r="7"/>
           <text ng-show="showDate" ng-attr-x="{{oneEvent.positionX}}" ng-attr-y="{{(($parent.$index + 1) * 115) + 23}}" font-size="14" font-family="sans-serif">{{oneEvent.date}} {{oneEvent.daysToGoDisplay}}</text>
         </a>
-          <a href="#" ng-mouseenter="showDate = true" ng-mouseleave="showDate = false">
-            <text ng-attr-x="{{oneEvent.positionX}}" ng-attr-y="{{(($parent.$index + 1) * 115) - 10}}" ng-attr-transform="rotate(-45 {{oneEvent.positionX}}, {{(($parent.$index + 1) * 115) - 10}})" font-size="14" font-family="sans-serif">{{oneEvent.nickname}}</text>
+          <a ng-mouseenter="showDate = true" ng-mouseleave="showDate = false">
+            <text ng-click="showEventInfo(oneEvent)" ng-attr-x="{{oneEvent.positionX}}" ng-attr-y="{{(($parent.$index + 1) * 115) - 10}}" ng-attr-transform="rotate(-45 {{oneEvent.positionX}}, {{(($parent.$index + 1) * 115) - 10}})" font-size="14" font-family="sans-serif">{{oneEvent.nickname}}</text>
           </a>
       </g>
 
-      <a ng-if="case.trial" href="#" ng-mouseenter="showTrialDate = true" ng-mouseleave="showTrialDate = false">
-        <rect id="trialBox" ng-attr-x="{{case.trBeginX}}" ng-attr-y="{{(($index + 1) * 115)-10}}" ng-attr-width="{{case.trLength}}" height="20"/>
+      <a ng-if="case.trial" ng-mouseenter="showTrialDate = true" ng-mouseleave="showTrialDate = false">
+        <rect id="trialBox" ng-click="showTrialInfo(case)" ng-attr-x="{{case.trBeginX}}" ng-attr-y="{{(($index + 1) * 115)-10}}" ng-attr-width="{{case.trLength}}" height="20"/>
         <text ng-show="showTrialDate" ng-attr-x="{{case.trBeginX}}" ng-attr-y="{{(($index + 1) * 115) + 25}}" font-size="14" font-family="sans-serif">{{case.trial.dateDisplay}}</text>
         <text ng-show="showTrialDate" ng-attr-x="{{case.trBeginX}}" ng-attr-y="{{(($index + 1) * 115) + 40}}" font-size="14" font-family="sans-serif">{{case.trial.daysToGoDisplay}}</text>
       </a>
-        <a ng-if="case.trial" href="#" ng-mouseenter="showTrialDate = true" ng-mouseleave="showTrialDate = false">
-          <text ng-attr-x="{{(case.trBeginX)}}" ng-attr-y="{{(($index + 1) * 115)-15}}" font-size="14" font-family="sans-serif">Trial</text>
+        <a ng-if="case.trial" ng-mouseenter="showTrialDate = true" ng-mouseleave="showTrialDate = false">
+          <text ng-click="showTrialInfo(case)" ng-attr-x="{{(case.trBeginX)}}" ng-attr-y="{{(($index + 1) * 115)-15}}" font-size="14" font-family="sans-serif">Trial</text>
           <text ng-show="showTrialDate" ng-attr-x="{{case.trBeginX}}" ng-attr-y="{{(($index + 1) * 115) + 25}}" font-size="14" font-family="sans-serif">{{case.trial.dateDisplay}}</text>
           <text ng-show="showTrialDate" ng-attr-x="{{case.trBeginX}}" ng-attr-y="{{(($index + 1) * 115) + 40}}" font-size="14" font-family="sans-serif">{{case.trial.daysToGoDisplay}}</text>
         </a>
@@ -41,4 +47,9 @@
       <text ng-attr-x="{{(todaysDateX) - 10}}" y="20" font-size="20" font-family="sans-serif">{{todaysDate}}</text></a>
 
   </svg>
+  <more-info-event-modal></more-info-event-modal>
+  <more-info-trial-modal></more-info-trial-modal>
+  <more-info-case-modal></more-info-case-modal>
+  <edit-case-modal></edit-case-modal>
+  <delete-case-modal></delete-case-modal>
 </div>
