@@ -1,7 +1,39 @@
 <div ng-show="showMoreEditInfo" class="popupmodal">
   <div class="modal-content">
-    <h3>{{modalEvent}}</h3>
+    <span class="close" ng-click="showMoreEditInfo = false">x</span>
+      <form class="inputBoxes">
+          <div class="inputColumn">
+            <input type="text" placeholder="Case Name" ng-model="modalEvent.name"><br>
+            <h6 id="schedConfTitle"><i>Sched. Conf. Date (req'd):</i></h6>
+            <input type="text" placeholder="Scheduling Conference Date" onfocus="(this.type='date')" ng-model="modalEvent.schedConf"><br>
+            <input type="text" placeholder="Court" ng-model="modalEvent.court"><br>
+            <input type="text" placeholder="Judge" ng-model="modalEvent.judge"><br>
+            <input type="text" placeholder="Cause Number" ng-model="modalEvent.causeNo"><br>
+            <input type="text" placeholder="Assigned Counsel" ng-model="modalEvent.assignedCounsel"><br>
+            <input type="text" placeholder="Opposing Counsel" ng-model="modalEvent.opposingCounsel"><br>
+            <input type="text" placeholder="Client Contact" ng-model="modalEvent.clientName"><br>
+            <input type="text" placeholder="Client Phone Number" ng-model="modalEvent.clientNumber"><br>
+            <input type="text" placeholder="Client Email" ng-model="modalEvent.clientEmail"><br>
+            <input type="text" placeholder="Case Description" ng-model="modalEvent.caseDesc"><br>
+          </div>
+
+          <div class="inputColumn eventDiv">
+            <input type="checkbox">Trial Date<br>
+              <input type="text" placeholder="Begin Date" onfocus="(this.type='date')" ng-model="modalEvent.trial.beginDate"/><br>
+              <input type="text" placeholder="End Date" onfocus="(this.type='date')" ng-model="modalEvent.trial.endDate"><br>
+              <input type="text" placeholder="Description" ng-model="modalEvent.trial.description"><br>
 
 
+              <div ng-repeat="event in modalEvent.events">
+                <input type="checkbox"><span ng-if="event.title">{{event.title}}</span><input ng-if="!event.title" type="text" ng-model="event.title" placeholder="event title">
+                  <input type="text" placeholder="Date" onfocus="(this.type='date')" ng-model="event.date">
+                  <input type="text" placeholder="Description" ng-model="event.description">
+              </div>
+
+          <br><button ng-click="putTheCase(modalEvent); showMoreEditInfo = false" type="button" id="modalEnter">ENTER</button>
+
+        </div>
+
+      </form>
   </div>
 </div>

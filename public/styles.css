@@ -179,13 +179,17 @@ width:20px;
 #caseName {
   text-decoration: underline;
   font-family: sans-serif;
-  /*stroke: black;*/
 }
 
-#event {
+#eventCircle {
   stroke:black;
   stroke-width:1;
   fill:red
+}
+
+#eventText {
+  font-size:14;
+  font-family:sans-serif;
 }
 
 #trialBox {
@@ -202,4 +206,10 @@ width:20px;
 #blackLine {
   stroke:black;
   stroke-width:2
+}
+
+#schedConfTitle {
+  margin:0;
+  padding: 2px;
+  font-size: 75%;
 }
