@@ -1,11 +1,11 @@
 <div id="addNewModal" class="modal">
   <div class="modal-content">
     <span class="close">x</span>
-    <form class="inputBoxes">
+    <form class="inputBoxes" ng-submit="postNewCase(newCase)">
         <div class="inputColumn">
           <input type="text" placeholder="Case Name (Req'd)" ng-model="newCase.name"><br>
           <h6 id="schedConfTitle"><i>Sched. Conf. Date (req'd):</i></h6>
-          <input type="date" placeholder="Scheduling Conference Date" ng-model="newCase.schedConf"><br>
+          <input type="date" required placeholder="Scheduling Conference Date" ng-model="newCase.schedConf"><br>
           <input type="text" placeholder="Court" ng-model="newCase.court"><br>
           <input type="text" placeholder="Judge" ng-model="newCase.judge"><br>
           <input type="text" placeholder="Cause Number" ng-model="newCase.causeNo"><br>
@@ -18,22 +18,22 @@
         </div>
 
         <div class="inputColumn eventDiv">
-          <input type="checkbox" ng-model="check1">Trial Date<br>
-          <div class="" ng-show="check1">
+          <input type="checkbox" ng-model="newCase.trial.included">Trial Date<br>
+          <div class="" ng-show="newCase.trial.included">
             <input type="date" placeholder="Begin Date" ng-model="newCase.trial.beginDate"/><br>
             <input type="date" placeholder="End Date" ng-model="newCase.trial.endDate"/><br>
             <input type="text" placeholder="Description" ng-model="newCase.trial.description"><br>
           </div>
 
             <div ng-repeat="event in newCase.events">
-              <input type="checkbox" ng-model="checked"><span ng-if="event.title">{{event.title}}</span><input ng-if="!event.title" type="text" ng-model="event.title" placeholder="event title">
-              <div ng-show="checked">
+              <input type="checkbox" ng-model="event.included"><span ng-if="event.title">{{event.title}}</span><input ng-if="!event.title" type="text" ng-model="event.title" placeholder="event title">
+              <div ng-show="event.included">
                 <input type="date" ng-model="event.date">
                 <input type="text" placeholder="description" ng-model="event.description">
               </div>
             </div>
 
-        <br><button ng-click="postNewCase(newCase)" type="button" id="modalEnter">ENTER</button>
+        <br><button type="submit" id="modalEnter">ENTER</button>
       </div>
 
     </form>

@@ -59,6 +59,13 @@ angular.module("bigPicture", ["ui.router"])
   }
 })
 
+.directive("dateLine", function(){
+  return {
+    templateUrl: "./templates/dateLine.html",
+    controller: "mainCtrl"
+  }
+})
+
 .config(function($urlRouterProvider, $stateProvider){
   $stateProvider
     .state("home", {
@@ -75,3 +82,11 @@ angular.module("bigPicture", ["ui.router"])
     $urlRouterProvider.otherwise("/");
 
   })
+
+    $(document).ready(function(){
+      console.log("scrolling");
+    $(window).scroll(function(){
+
+      $('#footer').css('left', 0 - $(this).scrollLeft());
+    });
+    });

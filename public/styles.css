@@ -43,12 +43,11 @@ a:hover {
   color: Black;
 }
 
-
-/*#sortSelector {
+#sortSelector {
   position: absolute;
   top: 17px;
   right: 120px;
-}*/
+}
 
 /*Modal*/
 .modal{
@@ -199,7 +198,7 @@ width:20px;
 }
 
 #dateLine {
-  stroke:black;
+  stroke:blue;
   stroke-width:3
 }
 
@@ -212,4 +211,12 @@ width:20px;
   margin:0;
   padding: 2px;
   font-size: 75%;
+}
+
+/*Footer*/
+#footer {
+position:fixed;
+bottom:0px;
+height:50px;
+background-color:white;
 }

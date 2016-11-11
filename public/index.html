@@ -9,20 +9,34 @@
 
     <header class="header">
       <h2>big_picture</h2>
-      <!-- <select id="sortSelector">
-        <option value="+schedConf">Sched. Conf.</option>
+      <!-- <select id="sortSelector" ng-model="sortBy">
+        <option selected value="+schedConf">Sched. Conf.</option>
         <option value="+trial.beginDate">Trial Date</option>
       </select> -->
 
-
       <a><button class="button" id="addNew">+ Add New</button></a>
-
 
     </header>
 
     <add-new></add-new>
 
     <ui-view></ui-view>
+
+    <!-- <div id="footer" style="position:fixed;bottom:0px;width:{{displayWidthX}}px;height:50px;background-color:yellow;"> -->
+
+    <div id="footer" style="width:{{displayWidthX}}px">
+
+      <date-line></date-line>
+
+    </div>
+
+    <!-- <div id="one">
+
+    </div>
+    <div id="dateLine">
+      <p> This is a really long test that I want to test for a while. A really long while.</p>
+
+    </div> -->
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.3.1/angular-ui-router.min.js"></script>

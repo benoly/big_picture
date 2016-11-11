@@ -16,13 +16,15 @@ var caseSchema = new mongoose.Schema({
   trial: {
     beginDate: Date,
     endDate: Date,
-    description: String
+    description: String,
+    included: {type: Boolean, default: false}
   },
   events: [{
     title: String,
     nickname: String,
     date: Date,
-    description: String
+    description: String,
+    included: {type: Boolean, default: false}
   }]
 });
 

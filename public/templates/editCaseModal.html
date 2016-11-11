@@ -18,16 +18,16 @@
           </div>
 
           <div class="inputColumn eventDiv">
-            <input type="checkbox">Trial Date<br>
-              <input type="text" placeholder="Begin Date" onfocus="(this.type='date')" ng-model="modalEvent.trial.beginDate"/><br>
+            <input type="checkbox" ng-model="modalEvent.trial.included">Trial Date<br>
+              <input type="text" placeholder="modalEvent.trial.beginDate" onfocus="(this.type='date')" ng-model="modalEvent.trial.beginDate"><br>
               <input type="text" placeholder="End Date" onfocus="(this.type='date')" ng-model="modalEvent.trial.endDate"><br>
               <input type="text" placeholder="Description" ng-model="modalEvent.trial.description"><br>
 
 
               <div ng-repeat="event in modalEvent.events">
-                <input type="checkbox"><span ng-if="event.title">{{event.title}}</span><input ng-if="!event.title" type="text" ng-model="event.title" placeholder="event title">
-                  <input type="text" placeholder="Date" onfocus="(this.type='date')" ng-model="event.date">
-                  <input type="text" placeholder="Description" ng-model="event.description">
+                <input type="checkbox" ng-model="event.included">{{event.title}}<input ng-if="!event.title" type="text" ng-model="event.title" placeholder="event title">
+                  <input ng-show="event.included" type="text" placeholder="Date" onfocus="(this.type='date')" ng-model="event.date">
+                  <input ng-show="event.included" type="text" placeholder="Description" ng-model="event.description">
               </div>
 
           <br><button ng-click="putTheCase(modalEvent); showMoreEditInfo = false" type="button" id="modalEnter">ENTER</button>
