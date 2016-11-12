@@ -20,6 +20,7 @@ $scope.getCases = function(){
       .then(function(response){
         // console.log(response);
         $scope.allTheCases = response;
+        // console.log(response);
 
         $scope.todaysDate = moment.utc().format('L');
 
@@ -29,7 +30,7 @@ $scope.getCases = function(){
 
         for (var j = 0; j < $scope.allTheCases.length; j++) {
           $scope.allTheCases[j].schedConf = moment.utc($scope.allTheCases[j].schedConf).format("YYYY-MM-DD");
-          console.log($scope.allTheCases[j].schedConf);
+          // console.log($scope.allTheCases[j].schedConf);
           if(moment.utc($scope.allTheCases[j].schedConf) < moment.utc($scope.beginDate)){
             $scope.beginDate = $scope.allTheCases[j].schedConf;
           }
@@ -129,6 +130,13 @@ $scope.getCases = function(){
         $scope.lastXCoord = moment.utc($scope.latestEndDate).diff(moment.utc($scope.beginDate), 'days') * 2.5 + 100;
 
       }
+      $scope.monthsDateLine = Math.floor(moment.utc($scope.latestEndDate).diff(moment.utc($scope.beginDate), 'months'));
+
+      $scope.dateLineInfo = [];
+      for(var i = 0; i < $scope.monthsDateLine; i++){
+        $scope.dateLineInfo.push({month: (moment.utc($scope.beginDate).add(i+1, 'months').startOf('month').format("MMM 'YY")), xPos: (moment.utc($scope.beginDate).add(i+1, 'months').startOf('month').diff(moment.utc($scope.beginDate), 'days') * 2.5 + 100)});
+      }
+
     });
   };
 

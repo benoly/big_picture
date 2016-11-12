@@ -89,4 +89,17 @@ angular.module("bigPicture", ["ui.router"])
 
       $('#footer').css('left', 0 - $(this).scrollLeft());
     });
+
+      // $("#footer").on("mouseover", function(e){
+      //   $("#movingLine")[0].style.display = "block";
+      //   var pos = e.pageX;
+      //
+      //
+      //   $("#movingLine")[0].setAttribute('x1', pos);
+      //   $("#movingLine")[0].setAttribute('x2', pos);
+      //   $("#footer").on("mouseout", function(e){
+      //     $("#movingLine")[0].style.display = "none";
+      //   });
+      // })
+
     });

@@ -3,6 +3,12 @@
 
   <svg id="mainSvg" ng-attr-height="{{displayHeightY}}" ng-attr-width="{{displayWidthX}}">
 
+    <!-- <line id="movingLine" x1="0" x2="0" y1="0" ng-attr-y2="{{displayHeightY}}"/> -->
+
+    <g ng-repeat="date in dateLineInfo">
+      <line id="backgroundLines" ng-attr-x1="{{date.xPos}}" ng-attr-y1="{{displayHeightY}}" ng-attr-x2="{{date.xPos}}" y2="0"/>
+    </g>
+
     <g ng-repeat="case in allTheCases | orderBy: '+schedConf'">
 
     <!-- <g ng-repeat="case in allTheCases | orderBy:sortBy"> -->
@@ -33,7 +39,7 @@
       </g>
 
       <a ng-if="case.trial.included" ng-mouseenter="showTrialDate = true" ng-mouseleave="showTrialDate = false">
-        <rect id="trialBox" ng-click="showTrialInfo(case)" ng-attr-x="{{case.trBeginX}}" ng-attr-y="{{(($index + 1) * 125)-10}}" ng-attr-width="{{case.trLength}}" height="20"/>
+        <rect id="trialBox" ng-click="showTrialInfo(case)" ng-attr-x="{{case.trBeginX}}" ng-attr-y="{{(($index + 1) * 125)-10}}" rx="3" ry="3" ng-attr-width="{{case.trLength}}" height="20"/>
         <text ng-show="showTrialDate" ng-attr-x="{{case.trBeginX}}" ng-attr-y="{{(($index + 1) * 125) + 25}}" font-size="14" font-family="sans-serif">{{case.trial.dateDisplay}}</text>
         <text ng-show="showTrialDate" ng-attr-x="{{case.trBeginX}}" ng-attr-y="{{(($index + 1) * 125) + 40}}" font-size="14" font-family="sans-serif">{{case.trial.daysToGoDisplay}}</text>
       </a>
@@ -45,14 +51,16 @@
 
     </g>
 
-    <line id="dateLine" ng-attr-x1="{{todaysDateX}}" y1="25" ng-attr-x2="{{todaysDateX}}" ng-attr-y2="{{displayHeightY}}"/>
+    <line id="todayLine" ng-attr-x1="{{todaysDateX}}" y1="25" ng-attr-x2="{{todaysDateX}}" ng-attr-y2="{{displayHeightY}}"/>
       <text ng-attr-x="{{(todaysDateX) - 10}}" y="0" font-size="20" font-family="sans-serif">Today</text></a>
       <text ng-attr-x="{{(todaysDateX) - 10}}" y="20" font-size="20" font-family="sans-serif">{{todaysDate}}</text></a>
 
   </svg>
+
   <more-info-event-modal></more-info-event-modal>
   <more-info-trial-modal></more-info-trial-modal>
   <more-info-case-modal></more-info-case-modal>
   <edit-case-modal></edit-case-modal>
   <delete-case-modal></delete-case-modal>
+  
 </div>

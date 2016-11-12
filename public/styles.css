@@ -8,9 +8,9 @@ a:hover {
 }
 
 .header {
-  height: 50px;
+  height: 55px;
   width: 100vw;
-  background-color: White;
+  background-color: whitesmoke;
   position: fixed;
 }
 
@@ -29,7 +29,7 @@ a:hover {
   top:12px;
   right: 30px;
   padding:5px;
-  background-color: White;
+  background-color: whitesmoke;
   border: 2px solid Black;
   color: Black;
   text-decoration:none;
@@ -151,6 +151,8 @@ a:hover {
 /*home.html*/
 #mainSvg {
   padding-top: 40px;
+  /*background-color: lightskyblue*/
+  background-color: whitesmoke
 }
 
 #caseLine {
@@ -198,11 +200,15 @@ width:20px;
 }
 
 #dateLine {
+  stroke-width:3
+}
+
+#todayLine {
   stroke:blue;
   stroke-width:3
 }
 
-#blackLine {
+#blackLine, #movingLine {
   stroke:black;
   stroke-width:2
 }
@@ -213,10 +219,15 @@ width:20px;
   font-size: 75%;
 }
 
+#backgroundLines {
+  stroke: lightgray;
+  stroke-width:1
+}
+
 /*Footer*/
 #footer {
 position:fixed;
 bottom:0px;
-height:50px;
-background-color:white;
+height:60px;
+background-color:whitesmoke;
 }
