@@ -1,6 +1,8 @@
 /*index.html*/
+
 body {
   margin: 0;
+  background-color: whitesmoke;
 }
 
 a:hover {

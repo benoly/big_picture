@@ -13,7 +13,7 @@
 
     <!-- <g ng-repeat="case in allTheCases | orderBy:sortBy"> -->
 
-      <a><line id="caseLine" ng-attr-x1="{{case.schedConfX}}" ng-attr-y1="{{($index + 1) * 125}}" ng-attr-x2="{{case.lastDateX}}" ng-attr-y2="{{($index + 1) * 125}}"/></a>
+      <line id="caseLine" ng-attr-x1="{{case.schedConfX}}" ng-attr-y1="{{($index + 1) * 125}}" ng-attr-x2="{{case.lastDateX}}" ng-attr-y2="{{($index + 1) * 125}}"/>
 
       <circle id="schedConf" ng-attr-cx="{{case.schedConfX}}" ng-attr-cy="{{($index + 1) * 125}}" r="10"/>
         <a><text id="caseName" ng-click="showCaseInfo(case)" ng-attr-x="{{case.schedConfX + 20}}" ng-attr-y="{{(($index + 1) * 125) + 25}}" font-size="20">{{case.name}}</text></a>
@@ -30,7 +30,7 @@
 
         <a ng-mouseenter="showDate = true" ng-mouseleave="showDate = false">
           <circle id="eventCircle" ng-click="showEventInfo(oneEvent)" ng-attr-cx="{{oneEvent.positionX}}" ng-attr-cy="{{($parent.$index + 1) * 125}}" r="7"/>
-          <text id="showDate" ng-show="showDate" ng-attr-x="{{oneEvent.positionX}}" ng-attr-y="{{(($parent.$index + 1) * 125) + 23}}" font-size="14" font-family="sans-serif" enable-background="true">{{oneEvent.date}} {{oneEvent.daysToGoDisplay}}</text>
+          <text id="showDate" ng-show="showDate" ng-attr-x="{{oneEvent.positionX}}" ng-attr-y="{{(($parent.$index + 1) * 125) + 23}}" font-size="14" font-family="sans-serif" enable-background="true">{{oneEvent.dateDisplay}} {{oneEvent.daysToGoDisplay}}</text>
         </a>
           <a ng-mouseenter="showDate = true" ng-mouseleave="showDate = false">
             <text id="eventText" ng-click="showEventInfo(oneEvent)" ng-attr-x="{{oneEvent.positionX}}" ng-attr-y="{{(($parent.$index + 1) * 125) - 10}}" ng-attr-transform="rotate(-45 {{oneEvent.positionX}}, {{(($parent.$index + 1) * 125) - 10}})">{{oneEvent.nickname}}</text>
@@ -53,7 +53,7 @@
 
     <line id="todayLine" ng-attr-x1="{{todaysDateX}}" y1="25" ng-attr-x2="{{todaysDateX}}" ng-attr-y2="{{displayHeightY}}"/>
       <text ng-attr-x="{{(todaysDateX) - 10}}" y="0" font-size="20" font-family="sans-serif">Today</text></a>
-      <text ng-attr-x="{{(todaysDateX) - 10}}" y="20" font-size="20" font-family="sans-serif">{{todaysDate}}</text></a>
+      <text ng-attr-x="{{(todaysDateX) - 10}}" y="20" font-size="20" font-family="sans-serif">{{todaysDateDisplay}}</text></a>
 
   </svg>
 
@@ -62,5 +62,5 @@
   <more-info-case-modal></more-info-case-modal>
   <edit-case-modal></edit-case-modal>
   <delete-case-modal></delete-case-modal>
-  
+
 </div>

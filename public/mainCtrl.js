@@ -22,7 +22,9 @@ $scope.getCases = function(){
         $scope.allTheCases = response;
         // console.log(response);
 
-        $scope.todaysDate = moment.utc().format('L');
+        $scope.todaysDate = moment.utc().format("YYYY-MM-DD");
+        $scope.todaysDateDisplay = moment.utc().format("MM/DD/YYYY");
+
 
         $scope.beginDate = $scope.allTheCases[0].schedConf;
 
@@ -51,8 +53,10 @@ $scope.getCases = function(){
           $scope.allTheCases[k].latestEndDateForCase = $scope.allTheCases[k].schedConf;
 
           if($scope.allTheCases[k].trial.beginDate){
-            $scope.allTheCases[k].trial.beginDate = moment.utc($scope.allTheCases[k].trial.beginDate).format('L');
-            $scope.allTheCases[k].trial.endDate = moment.utc($scope.allTheCases[k].trial.endDate).format('L');
+            $scope.allTheCases[k].trial.beginDate = moment.utc($scope.allTheCases[k].trial.beginDate).format("YYYY-MM-DD");
+            $scope.allTheCases[k].trial.beginDateDisplay = moment.utc($scope.allTheCases[k].trial.beginDate).format("MM/DD/YYYY");
+            $scope.allTheCases[k].trial.endDate = moment.utc($scope.allTheCases[k].trial.endDate).format("YYYY-MM-DD");
+            $scope.allTheCases[k].trial.endDateDisplay = moment.utc($scope.allTheCases[k].trial.endDate).format("MM/DD/YYYY");
             console.log($scope.allTheCases[k].trial.endDate);
             $scope.allTheCases[k].latestEndDateForCase = $scope.allTheCases[k].trial.endDate;
             $scope.allTheCases[k].trBeginX =
@@ -61,7 +65,7 @@ $scope.getCases = function(){
             moment.utc($scope.allTheCases[k].trial.endDate).diff(moment.utc($scope.allTheCases[k].trial.beginDate), 'days') * 2.5;
             $scope.allTheCases[k].lineEndDate = $scope.allTheCases[k].trial.beginDate;
             // console.log($scope.allTheCases[k].lineEndDate);
-            $scope.allTheCases[k].trial.dateDisplay = $scope.allTheCases[k].trial.beginDate + " to " + $scope.allTheCases[k].trial.endDate;
+            $scope.allTheCases[k].trial.dateDisplay = $scope.allTheCases[k].trial.beginDateDisplay + " to " + $scope.allTheCases[k].trial.endDateDisplay;
 
             if(moment.utc($scope.allTheCases[k].trial.beginDate) >= moment.utc($scope.todaysDate)){
               $scope.allTheCases[k].trial.daysToGo = moment.utc($scope.allTheCases[k].trial.beginDate).diff(moment.utc($scope.todaysDate), 'days');
@@ -69,7 +73,7 @@ $scope.getCases = function(){
                 $scope.allTheCases[k].trial.daysToGoDisplay = "(Today)";
               };
               if($scope.allTheCases[k].trial.daysToGo == 1){
-                $scope.allTheCases[k].trial.daysToGoDisplay = "(" + $scope.allTheCases[k].trial.daysToGo + " day away)";
+                $scope.allTheCases[k].trial.daysToGoDisplay = "(Tomorrow)";
               };
               if($scope.allTheCases[k].trial.daysToGo > 1){
                 $scope.allTheCases[k].trial.daysToGoDisplay = "(" + $scope.allTheCases[k].trial.daysToGo + " days away)";
@@ -85,7 +89,8 @@ $scope.getCases = function(){
           for (var l = 0; l < $scope.allTheCases[k].events.length; l++){
 
             if($scope.allTheCases[k].events[l].date){
-              $scope.allTheCases[k].events[l].date = moment.utc($scope.allTheCases[k].events[l].date).format('L');
+              $scope.allTheCases[k].events[l].date = moment.utc($scope.allTheCases[k].events[l].date).format("YYYY-MM-DD");
+              $scope.allTheCases[k].events[l].dateDisplay = moment.utc($scope.allTheCases[k].events[l].date).format("MM/DD/YYYY");
               $scope.allTheCases[k].events[l].positionX = moment.utc($scope.allTheCases[k].events[l].date).diff(moment.utc($scope.beginDate),'days') * 2.5 + 100;
 
               if(moment.utc($scope.allTheCases[k].events[l].date) >= moment.utc($scope.todaysDate)){
@@ -95,10 +100,7 @@ $scope.getCases = function(){
                   $scope.allTheCases[k].events[l].daysToGoDisplay = "(Today)";
                 }
                 if($scope.allTheCases[k].events[l].daysToGo == 1){
-                  $scope.allTheCases[k].events[l].daysToGoDisplay = "(" + $scope.allTheCases[k].events[l].daysToGo + " day away)";
-                }
-                if($scope.allTheCases[k].events[l].daysToGo == 1){
-                  $scope.allTheCases[k].events[l].daysToGoDisplay = "(" + $scope.allTheCases[k].events[l].daysToGo + " day away)";
+                  $scope.allTheCases[k].events[l].daysToGoDisplay = "(Tomorrow)";
                 }
                 if($scope.allTheCases[k].events[l].daysToGo > 1){
                   $scope.allTheCases[k].events[l].daysToGoDisplay = "(" + $scope.allTheCases[k].events[l].daysToGo + " days away)";
