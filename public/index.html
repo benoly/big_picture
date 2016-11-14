@@ -3,18 +3,28 @@
   <head>
     <meta charset="utf-8">
     <title>Big Picture</title>
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link href="icon.png" rel="shortcut icon" type="image/x-icon">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
   </head>
+
   <body ng-controller="mainCtrl">
 
     <header class="header">
-      <!-- <i class="fa fa-4x fa-calendar-plus-o" aria-hidden="true"></i> -->
+
       <h2>big_picture</h2>
-      <!-- <select id="sortSelector" ng-model="sortBy">
-        <option selected value="+schedConf">Sched. Conf.</option>
+
+      <h4>Sort by:</h4>
+
+      <select id="sortSelector" ng-model="sortBy" ng-init="sortBy='+schedConf'">
+        <option value="+schedConf">Sched. Conf.</option>
+        <option value="+events[3].date">Discovery</option>
         <option value="+trial.beginDate">Trial Date</option>
-      </select> -->
+      </select>
+
+      <!-- <button class="button" id="trialCalendar">Trial Calendar</button> -->
+
+      <!-- <button class="button" id="sortbyBtn">Sort Cases</button> -->
 
       <a><button class="button" id="addNew">+ Add New</button></a>
 

@@ -10,89 +10,109 @@ $scope.postNewCase = function(nextCase){
       document.getElementById('addNewModal').style.display = "none";
       $scope.newCase = mainServ.newCase();
       $scope.check1 = false;
-      // $scope.getCases();
-      location.reload(); //remove later
+      location.reload();
     });
 };
 
 $scope.getCases = function(){
     mainServ.getAllTheCases()
       .then(function(response){
-        // console.log(response);
         $scope.allTheCases = response;
-        // console.log(response);
 
-        $scope.todaysDate = moment.utc().format("YYYY-MM-DD");
-        $scope.todaysDateDisplay = moment.utc().format("MM/DD/YYYY");
+        //Center today's date line on reload
+        document.body.scrollLeft = ($scope.todaysDateX) - (window.outerWidth/2);
 
+        // Today's Date
+        $scope.todaysDate = moment().format("YYYY-MM-DD");
+        $scope.todaysDateDisplay = moment().format("MM/DD/YYYY");
+        $scope.todaysDateX = (moment.utc().diff(moment.utc($scope.beginDate), 'days')) * 2.5 + 100;
 
+        //Earliest Date
         $scope.beginDate = $scope.allTheCases[0].schedConf;
-
-        // console.log(moment.utc("11/12/2016").format("YYYY-MM-DD"));
-
         for (var j = 0; j < $scope.allTheCases.length; j++) {
           $scope.allTheCases[j].schedConf = moment.utc($scope.allTheCases[j].schedConf).format("YYYY-MM-DD");
-          // console.log($scope.allTheCases[j].schedConf);
           if(moment.utc($scope.allTheCases[j].schedConf) < moment.utc($scope.beginDate)){
             $scope.beginDate = $scope.allTheCases[j].schedConf;
           }
         }
 
-        $scope.todaysDateX = (moment.utc().diff(moment.utc($scope.beginDate), 'days')) * 2.5 + 100;
-
         $scope.latestEndDate = $scope.todaysDate;
-
-        document.body.scrollLeft = ($scope.todaysDateX) - (window.outerWidth/2);
 
         for (var k = 0; k < $scope.allTheCases.length; k++) {
 
+          //Scheduling Conference X-coordinate
           $scope.allTheCases[k].schedConfX = moment.utc($scope.allTheCases[k].schedConf).diff(moment.utc($scope.beginDate),'days') * 2.5 + 100;
 
           $scope.allTheCases[k].lineEndDate = $scope.allTheCases[k].schedConf;
 
           $scope.allTheCases[k].latestEndDateForCase = $scope.allTheCases[k].schedConf;
 
+          //Establish trial-related dates and X-coordinates
           if($scope.allTheCases[k].trial.beginDate){
+
+            //Trial begin date
             $scope.allTheCases[k].trial.beginDate = moment.utc($scope.allTheCases[k].trial.beginDate).format("YYYY-MM-DD");
+
+            //Trial begin date for display
             $scope.allTheCases[k].trial.beginDateDisplay = moment.utc($scope.allTheCases[k].trial.beginDate).format("MM/DD/YYYY");
+
+            //Trial end date
             $scope.allTheCases[k].trial.endDate = moment.utc($scope.allTheCases[k].trial.endDate).format("YYYY-MM-DD");
+
+            //Trial end date for the display
             $scope.allTheCases[k].trial.endDateDisplay = moment.utc($scope.allTheCases[k].trial.endDate).format("MM/DD/YYYY");
-            console.log($scope.allTheCases[k].trial.endDate);
+
+            //Latest date for the individual case (if a trial)
             $scope.allTheCases[k].latestEndDateForCase = $scope.allTheCases[k].trial.endDate;
+
+            //Beginning X-coordinate for the individual case
             $scope.allTheCases[k].trBeginX =
             moment.utc($scope.allTheCases[k].trial.beginDate).diff(moment.utc($scope.beginDate), 'days') * 2.5 + 100;
+
+            //Total individual trial length (in pixels)
             $scope.allTheCases[k].trLength =
             moment.utc($scope.allTheCases[k].trial.endDate).diff(moment.utc($scope.allTheCases[k].trial.beginDate), 'days') * 2.5;
+
+
             $scope.allTheCases[k].lineEndDate = $scope.allTheCases[k].trial.beginDate;
-            // console.log($scope.allTheCases[k].lineEndDate);
+
+            //Trial dates for display
             $scope.allTheCases[k].trial.dateDisplay = $scope.allTheCases[k].trial.beginDateDisplay + " to " + $scope.allTheCases[k].trial.endDateDisplay;
 
+            //Days to go calculation for trial
             if(moment.utc($scope.allTheCases[k].trial.beginDate) >= moment.utc($scope.todaysDate)){
               $scope.allTheCases[k].trial.daysToGo = moment.utc($scope.allTheCases[k].trial.beginDate).diff(moment.utc($scope.todaysDate), 'days');
+
               if($scope.allTheCases[k].trial.daysToGo == 0){
                 $scope.allTheCases[k].trial.daysToGoDisplay = "(Today)";
               };
+
               if($scope.allTheCases[k].trial.daysToGo == 1){
                 $scope.allTheCases[k].trial.daysToGoDisplay = "(Tomorrow)";
               };
+
               if($scope.allTheCases[k].trial.daysToGo > 1){
                 $scope.allTheCases[k].trial.daysToGoDisplay = "(" + $scope.allTheCases[k].trial.daysToGo + " days away)";
               };
             };
 
+            //Adjusts latest date if last trial end date is beyond it
             if(moment.utc($scope.allTheCases[k].trial.endDate) > moment.utc($scope.latestEndDate)){
               $scope.latestEndDate = $scope.allTheCases[k].trial.endDate;
             }
 
           }
 
+          //Loop through events to form dates and X-coordinates
           for (var l = 0; l < $scope.allTheCases[k].events.length; l++){
 
+            //Formats date and sets X-coordinate if an event date exists
             if($scope.allTheCases[k].events[l].date){
               $scope.allTheCases[k].events[l].date = moment.utc($scope.allTheCases[k].events[l].date).format("YYYY-MM-DD");
               $scope.allTheCases[k].events[l].dateDisplay = moment.utc($scope.allTheCases[k].events[l].date).format("MM/DD/YYYY");
               $scope.allTheCases[k].events[l].positionX = moment.utc($scope.allTheCases[k].events[l].date).diff(moment.utc($scope.beginDate),'days') * 2.5 + 100;
 
+              //Calculates days until events that are beyond today
               if(moment.utc($scope.allTheCases[k].events[l].date) >= moment.utc($scope.todaysDate)){
                 $scope.allTheCases[k].events[l].daysToGo = moment.utc($scope.allTheCases[k].events[l].date).diff(moment.utc($scope.todaysDate), 'days')
 
@@ -107,6 +127,7 @@ $scope.getCases = function(){
                 }
               }
 
+              //Sets latest case end date if event date is beyond latest date
               if(moment.utc($scope.allTheCases[k].events[l].date) > moment.utc($scope.allTheCases[k].lineEndDate)){
                 $scope.allTheCases[k].lineEndDate = $scope.allTheCases[k].events[l].date;
                 $scope.allTheCases[k].latestEndDateForCase = $scope.allTheCases[k].lineEndDate;
@@ -114,16 +135,20 @@ $scope.getCases = function(){
             }
           }
 
+        //Sets latest overall date if it is beyond that already set
         if(moment.utc($scope.allTheCases[k].lineEndDate) > moment.utc($scope.latestEndDate)){
           $scope.latestEndDate = $scope.allTheCases[k].lineEndDate;
         }
 
+        //Sets latest overall X-coordinate
         $scope.allTheCases[k].lastDateX =
         moment.utc($scope.allTheCases[k].lineEndDate).diff(moment.utc($scope.beginDate), 'days') * 2.5 + 100;
 
+        //Sets display width
         $scope.displayWidthX =
         (moment.utc($scope.latestEndDate).diff(moment.utc($scope.beginDate), 'days') * 2.5) + 300;
 
+        //Sets display height
         $scope.displayHeightY = ($scope.allTheCases.length * 125) + 100;
 
         $scope.allTheCases[k].latestDateX =
@@ -134,26 +159,29 @@ $scope.getCases = function(){
       }
       $scope.monthsDateLine = Math.floor(moment.utc($scope.latestEndDate).diff(moment.utc($scope.beginDate), 'months'));
 
+      // $scope.monthsDateLine = moment(.startOf('month').isBetween);
+      // console.log($scope.monthsDateLine);
+
       $scope.dateLineInfo = [];
       for(var i = 0; i < $scope.monthsDateLine; i++){
         $scope.dateLineInfo.push({month: (moment.utc($scope.beginDate).add(i+1, 'months').startOf('month').format("MMM 'YY")), xPos: (moment.utc($scope.beginDate).add(i+1, 'months').startOf('month').diff(moment.utc($scope.beginDate), 'days') * 2.5 + 100)});
       }
-
     });
   };
 
   $scope.putTheCase = function(caseToPut){
-      // console.log(caseToPut);
       mainServ.changeTheCase(caseToPut)
         .then(function(response){
-          $scope.getCases();
+          // $scope.getCases();
+          location.reload();
         });
     };
 
   $scope.deleteTheCase = function(caseToRemove){
     mainServ.destroyTheCase(caseToRemove)
       .then(function(response){
-        $scope.getCases();
+        // $scope.getCases();
+        location.reload();
       });
   };
 

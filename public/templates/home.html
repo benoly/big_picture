@@ -9,9 +9,9 @@
       <line id="backgroundLines" ng-attr-x1="{{date.xPos}}" ng-attr-y1="{{displayHeightY}}" ng-attr-x2="{{date.xPos}}" y2="0"/>
     </g>
 
-    <g ng-repeat="case in allTheCases | orderBy: '+schedConf'">
+    <!-- <g ng-repeat="case in allTheCases | orderBy: '+schedConf'"> -->
 
-    <!-- <g ng-repeat="case in allTheCases | orderBy:sortBy"> -->
+    <g ng-repeat="case in allTheCases | orderBy:sortBy">
 
       <line id="caseLine" ng-attr-x1="{{case.schedConfX}}" ng-attr-y1="{{($index + 1) * 125}}" ng-attr-x2="{{case.lastDateX}}" ng-attr-y2="{{($index + 1) * 125}}"/>
 

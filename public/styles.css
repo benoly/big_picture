@@ -1,3 +1,29 @@
+#trialCalendar {
+    padding: 5px;
+    cursor: pointer;
+    position:absolute;
+    top:12px;
+    right: 210px;
+    background-color: whitesmoke;
+    border: 2px solid Black;
+    color: Black;
+    text-decoration:none;
+    border-radius: 5px;
+}
+
+#sortbyBtn {
+    padding: 5px;
+    cursor: pointer;
+    position:absolute;
+    top:12px;
+    right: 120px;
+    background-color: whitesmoke;
+    border: 2px solid Black;
+    color: Black;
+    text-decoration:none;
+    border-radius: 5px;
+}
+
 /*index.html*/
 
 body {
@@ -12,7 +38,7 @@ a:hover {
 .header {
   height: 55px;
   width: 100vw;
-  background-color: whitesmoke;
+  background-color: cadetblue;
   position: fixed;
 }
 
@@ -26,6 +52,14 @@ a:hover {
   letter-spacing: 2px;
 }
 
+.header h4 {
+  position:absolute;
+  top:0;
+  right: 230px;
+  margin-top: 17px;*/
+  padding:5px;
+}
+
 #addNew {
   position:absolute;
   top:12px;
@@ -35,6 +69,8 @@ a:hover {
   border: 2px solid Black;
   color: Black;
   text-decoration:none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
 #addNew:hover {
@@ -154,7 +190,7 @@ a:hover {
 #mainSvg {
   padding-top: 40px;
   /*background-color: lightskyblue*/
-  background-color: whitesmoke
+  background-color: whitesmoke;
 }
 
 #caseLine {
