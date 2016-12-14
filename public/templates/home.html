@@ -1,59 +1,53 @@
 <br><br><br>
 <div class="container">
 
-  <svg id="mainSvg" ng-attr-height="{{displayHeightY}}" ng-attr-width="{{displayWidthX}}">
-
-    <!-- <line id="movingLine" x1="0" x2="0" y1="0" ng-attr-y2="{{displayHeightY}}"/> -->
+  <svg id="mainSvg" ng-attr-height="{{displayHeightY * (zoomBy * 50) + 110}}" ng-attr-width="{{displayWidthX * zoomBy + 300}}">
 
     <g ng-repeat="date in dateLineInfo">
-      <line id="backgroundLines" ng-attr-x1="{{date.xPos}}" ng-attr-y1="{{displayHeightY}}" ng-attr-x2="{{date.xPos}}" y2="0"/>
+      <line id="backgroundLines" ng-attr-x1="{{date.xPos * zoomBy + 100}}" ng-attr-y1="{{displayHeightY * (zoomBy * 50) + 100}}" ng-attr-x2="{{date.xPos * zoomBy + 100}}" y2="0"/>
     </g>
-
-    <!-- <g ng-repeat="case in allTheCases | orderBy: '+schedConf'"> -->
 
     <g ng-repeat="case in allTheCases | orderBy:sortBy">
 
-      <line id="caseLine" ng-attr-x1="{{case.schedConfX}}" ng-attr-y1="{{($index + 1) * 125}}" ng-attr-x2="{{case.lastDateX}}" ng-attr-y2="{{($index + 1) * 125}}"/>
+      <line id="caseLine" ng-attr-x1="{{case.schedConfX * zoomBy + 100}}" ng-attr-y1="{{($index + 1) * (zoomBy * 50)}}" ng-attr-x2="{{case.lastDateX * zoomBy + 100}}" ng-attr-y2="{{($index + 1) * (zoomBy * 50)}}" style="stroke-width:{{zoomBy}}"/>
 
-      <circle id="schedConf" ng-attr-cx="{{case.schedConfX}}" ng-attr-cy="{{($index + 1) * 125}}" r="10"/>
-        <a><text id="caseName" ng-click="showCaseInfo(case)" ng-attr-x="{{case.schedConfX + 20}}" ng-attr-y="{{(($index + 1) * 125) + 25}}" font-size="20">{{case.name}}</text></a>
+      <circle id="schedConf" ng-attr-cx="{{case.schedConfX * zoomBy + 100}}" ng-attr-cy="{{($index + 1) * (zoomBy * 50)}}" r="{{zoomBy * 4}}"/>
+        <a><text id="caseName" ng-click="showCaseInfo(case)" ng-attr-x="{{(case.schedConfX * zoomBy + 100) - 5}}" ng-attr-y="{{(($index + 1) * (zoomBy * 50)) + (zoomBy * 16)}}" font-size="{{zoomBy * 8}}">{{case.name}}</text></a>
 
-        <a ng-mouseenter="showEdit = true" ng-mouseleave="showEdit = false"><image id="editPencil" ng-click="showEditInfo(case)" xlink:href="64px-Black_pencil.svg.png" ng-attr-x="{{(case.schedConfX - 40)}}" ng-attr-y="{{(($index + 1) * 125) - 10}}"></a>
-        <text ng-show="showEdit" ng-attr-x="{{(case.schedConfX - 43)}}" ng-attr-y="{{(($index + 1) * 125) + 30}}" font-size="14" font-family="sans-serif">Edit</text>
+        <a ng-mouseenter="showEdit = true" ng-mouseleave="showEdit = false"><image id="editPencil" ng-click="showEditInfo(case)" xlink:href="64px-Black_pencil.svg.png" ng-attr-x="{{(case.schedConfX * zoomBy + 100) - 40}}" ng-attr-y="{{(($index + 1) * (zoomBy * 50)) - 10}}"></a>
+        <text ng-show="showEdit" ng-attr-x="{{(case.schedConfX * zoomBy + 100) - 43}}" ng-attr-y="{{(($index + 1) * (zoomBy * 50)) + 30}}" font-size="14" font-family="sans-serif">Edit</text>
 
-        <a ng-mouseenter="showDelete = true" ng-mouseleave="showDelete = false"><image id="deleteX" ng-click="showDeleteModal(case)"  xlink:href="x_delete.png" ng-attr-x="{{(case.schedConfX - 70)}}" ng-attr-y="{{(($index + 1) * 125) - 8}}"></a>
-        <text ng-show="showDelete" ng-attr-x="{{(case.schedConfX - 83)}}" ng-attr-y="{{(($index + 1) * 125) + 30}}" font-size="14" font-family="sans-serif">Delete</text>
-
-        <!-- <a><image id="magnifyingGlass" xlink:href="64px-Magnifying_glass_icon.svg.png" ng-attr-x="{{(case.schedConfX + 20) + 25}}" ng-attr-y="{{(($index + 1) * 125) + 30}}"/></a> -->
+        <a ng-mouseenter="showDelete = true" ng-mouseleave="showDelete = false"><image id="deleteX" ng-click="showDeleteModal(case)"  xlink:href="x_delete.png" ng-attr-x="{{(case.schedConfX * zoomBy + 100) - 70}}" ng-attr-y="{{(($index + 1) * (zoomBy * 50)) - 8}}"></a>
+        <text ng-show="showDelete" ng-attr-x="{{(case.schedConfX * zoomBy + 100) - 83}}" ng-attr-y="{{(($index + 1) * (zoomBy * 50)) + 30}}" font-size="14" font-family="sans-serif">Delete</text>
 
       <g ng-show="oneEvent.included" ng-repeat="oneEvent in case.events">
 
         <a ng-mouseenter="showDate = true" ng-mouseleave="showDate = false">
-          <circle id="eventCircle" ng-click="showEventInfo(oneEvent)" ng-attr-cx="{{oneEvent.positionX}}" ng-attr-cy="{{($parent.$index + 1) * 125}}" r="7"/>
-          <text id="showDate" ng-show="showDate" ng-attr-x="{{oneEvent.positionX}}" ng-attr-y="{{(($parent.$index + 1) * 125) + 23}}" font-size="14" font-family="sans-serif" enable-background="true">{{oneEvent.dateDisplay}} {{oneEvent.daysToGoDisplay}}</text>
+          <circle id="eventCircle" ng-click="showEventInfo(oneEvent)" ng-attr-cx="{{oneEvent.positionX * zoomBy + 100}}" ng-attr-cy="{{($parent.$index + 1) * (zoomBy * 50)}}" r="{{zoomBy * 2.8}}"/>
+          <text ng-show="showDate" ng-attr-x="{{oneEvent.positionX * zoomBy + 100}}" ng-attr-y="{{(($parent.$index + 1) * (zoomBy * 50)) + (zoomBy * 9.2)}}" font-size="{{zoomBy * 5.6}}" font-family="sans-serif" enable-background="true">{{oneEvent.dateDisplay}} {{oneEvent.daysToGoDisplay}}</text>
         </a>
           <a ng-mouseenter="showDate = true" ng-mouseleave="showDate = false">
-            <text id="eventText" ng-click="showEventInfo(oneEvent)" ng-attr-x="{{oneEvent.positionX}}" ng-attr-y="{{(($parent.$index + 1) * 125) - 10}}" ng-attr-transform="rotate(-45 {{oneEvent.positionX}}, {{(($parent.$index + 1) * 125) - 10}})">{{oneEvent.nickname}}</text>
+            <text ng-click="showEventInfo(oneEvent)" ng-attr-x="{{oneEvent.positionX * zoomBy + 100}}" ng-attr-y="{{(($parent.$index + 1) * (zoomBy * 50)) - (zoomBy * 4)}}" font-size="{{zoomBy * 6}}" font-family="sans-serif" ng-attr-transform="rotate(-45 {{oneEvent.positionX * zoomBy + 100}}, {{(($parent.$index + 1) * (zoomBy * 50)) - (zoomBy * 4)}})">{{oneEvent.nickname}}</text>
           </a>
 
       </g>
 
       <a ng-if="case.trial.included" ng-mouseenter="showTrialDate = true" ng-mouseleave="showTrialDate = false">
-        <rect id="trialBox" ng-click="showTrialInfo(case)" ng-attr-x="{{case.trBeginX}}" ng-attr-y="{{(($index + 1) * 125)-10}}" rx="3" ry="3" ng-attr-width="{{case.trLength}}" height="20"/>
-        <text ng-show="showTrialDate" ng-attr-x="{{case.trBeginX}}" ng-attr-y="{{(($index + 1) * 125) + 25}}" font-size="14" font-family="sans-serif">{{case.trial.dateDisplay}}</text>
-        <text ng-show="showTrialDate" ng-attr-x="{{case.trBeginX}}" ng-attr-y="{{(($index + 1) * 125) + 40}}" font-size="14" font-family="sans-serif">{{case.trial.daysToGoDisplay}}</text>
+        <rect id="trialBox" ng-click="showTrialInfo(case)" ng-attr-x="{{case.trBeginX * zoomBy + 100}}" ng-attr-y="{{(($index + 1) * (zoomBy * 50)) - (zoomBy * 4)}}" rx="3" ry="3" ng-attr-width="{{case.trLength * zoomBy}}" height="{{zoomBy * 8}}"/>
+        <text ng-show="showTrialDate" ng-attr-x="{{case.trBeginX * zoomBy + 100}}" ng-attr-y="{{(($index + 1) * (zoomBy * 50)) + (zoomBy * 10)}}" font-size="{{zoomBy * 5.6}}" font-family="sans-serif">{{case.trial.dateDisplay}}</text>
+        <text ng-show="showTrialDate" ng-attr-x="{{case.trBeginX * zoomBy + 100}}" ng-attr-y="{{(($index + 1) * (zoomBy * 50)) + (zoomBy * 16)}}" font-size="{{zoomBy * 5.6}}" font-family="sans-serif">{{case.trial.daysToGoDisplay}}</text>
       </a>
         <a ng-if="case.trial.included" ng-mouseenter="showTrialDate = true" ng-mouseleave="showTrialDate = false">
-          <text ng-click="showTrialInfo(case)" ng-attr-x="{{(case.trBeginX)}}" ng-attr-y="{{(($index + 1) * 125)-15}}" font-size="14" font-family="sans-serif">Trial</text>
-          <text ng-show="showTrialDate" ng-attr-x="{{case.trBeginX}}" ng-attr-y="{{(($index + 1) * 125) + 25}}" font-size="14" font-family="sans-serif">{{case.trial.dateDisplay}}</text>
-          <text ng-show="showTrialDate" ng-attr-x="{{case.trBeginX}}" ng-attr-y="{{(($index + 1) * 125) + 40}}" font-size="14" font-family="sans-serif">{{case.trial.daysToGoDisplay}}</text>
+          <text ng-click="showTrialInfo(case)" ng-attr-x="{{(case.trBeginX * zoomBy + 100)}}" ng-attr-y="{{(($index + 1) * (zoomBy * 50)) - (zoomBy * 6)}}" font-size="{{zoomBy * 5.6}}" font-family="sans-serif">Trial</text>
+          <text ng-show="showTrialDate" ng-attr-x="{{case.trBeginX * zoomBy + 100}}" ng-attr-y="{{(($index + 1) * (zoomBy * 50)) + (zoomBy * 10)}}" font-size="{{zoomBy * 5.6}}" font-family="sans-serif">{{case.trial.dateDisplay}}</text>
+          <text ng-show="showTrialDate" ng-attr-x="{{case.trBeginX * zoomBy + 100}}" ng-attr-y="{{(($index + 1) * (zoomBy * 50)) + (zoomBy * 16)}}" font-size="{{zoomBy * 5.6}}" font-family="sans-serif">{{case.trial.daysToGoDisplay}}</text>
         </a>
 
     </g>
 
-    <line id="todayLine" ng-attr-x1="{{todaysDateX}}" y1="25" ng-attr-x2="{{todaysDateX}}" ng-attr-y2="{{displayHeightY}}"/>
-      <text ng-attr-x="{{(todaysDateX) - 10}}" y="0" font-size="20" font-family="sans-serif">Today</text></a>
-      <text ng-attr-x="{{(todaysDateX) - 10}}" y="20" font-size="20" font-family="sans-serif">{{todaysDateDisplay}}</text></a>
+    <line id="todayLine" ng-attr-x1="{{todaysDateX * zoomBy + 100}}" y1="25" ng-attr-x2="{{todaysDateX * zoomBy + 100}}" ng-attr-y2="{{displayHeightY * (zoomBy * 50) + 100}}" style="stroke-width:{{zoomBy}}"/>
+      <text ng-attr-x="{{(todaysDateX * zoomBy + 100) - 10}}" y="0" font-size="20" font-family="sans-serif">Today</text></a>
+      <text ng-attr-x="{{(todaysDateX * zoomBy + 100) - 10}}" y="20" font-size="20" font-family="sans-serif">{{todaysDateDisplay}}</text></a>
 
   </svg>
 

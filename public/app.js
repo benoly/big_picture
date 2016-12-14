@@ -24,6 +24,7 @@ angular.module("bigPicture", ["ui.router"])
     }
   }
 })
+
 .directive("moreInfoEventModal", function(){
   return {
     templateUrl: "./templates/moreInfoEventModal.html",
@@ -62,6 +63,13 @@ angular.module("bigPicture", ["ui.router"])
 .directive("dateLine", function(){
   return {
     templateUrl: "./templates/dateLine.html",
+    controller: "mainCtrl"
+  }
+})
+
+.directive("trialCalendarModal", function(){
+  return {
+    templateUrl: "./templates/trialCalendarModal.html",
     controller: "mainCtrl"
   }
 })

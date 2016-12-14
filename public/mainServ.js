@@ -9,11 +9,11 @@ angular.module("bigPicture")
     },
     {
       title: "Witness Disclosure Deadline",
-      nickname: "Wit. Discl."
+      nickname: "Wit. Dis."
     },
     {
       title: "Exp. Witness Disclosure Deadline",
-      nickname: "Wit. Discl."
+      nickname: "Exp. Wit. Dis."
     },
     {
       title: "Discovery Deadline",
@@ -21,11 +21,11 @@ angular.module("bigPicture")
     },
     {
       title: "Plaintiff Discovery Deadline",
-      nickname: "Pl. Discovery"
+      nickname: "Pl. Disco."
     },
     {
       title: "Defendant Discovery Deadline",
-      nickname: "Def. Discovery"
+      nickname: "Def. Disco."
     },
     {
       title: "Motions Deadline",

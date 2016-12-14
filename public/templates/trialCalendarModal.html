@@ -1,7 +1,14 @@
-<div ng-show="showMoreDeleteInfo" class="popupmodal">
+<div ng-show="showMoreTrialCalendar" class="popupmodal">
   <div class="modal-content">
-    <h3>Are you sure you want to permamently DELETE {{modalEvent.name}}?</h3>
-    <button type="button" ng-click="deleteTheCase(modalEvent); showMoreDeleteInfo = false">DELETE</button>
-    <button type="button" ng-click="showMoreDeleteInfo = false">CANCEL</button>
+    <h2 id="trialCalendarTitle">Trial Calendar</h2>
+    <div ng-if="case.trial.included" ng-repeat="case in allTheCases | orderBy:'+trial.beginDate'">
+        <h3>{{case.name}}: {{case.trial.dateDisplay}}</h3>
+        <!-- <ul>
+          <li>{{case.court}}</li>
+          <li>{{case.judge}}</li>
+        </ul> -->
+
+    </div>
+    <button ng-click="showMoreTrialCalendar=false">Close</button>
   </div>
 </div>

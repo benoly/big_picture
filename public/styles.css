@@ -2,20 +2,30 @@
     padding: 5px;
     cursor: pointer;
     position:absolute;
-    top:12px;
-    right: 210px;
+    top:14px;
+    left: 15px;
     background-color: whitesmoke;
-    border: 2px solid Black;
-    color: Black;
+    border: 2px solid black;
+    color: black;
     text-decoration:none;
     border-radius: 5px;
+}
+
+#trialCalendar:hover {
+  color: white;
+  background-color: black;
+  /*border: 2px solid white;*/
+}
+
+#trialCalendar:active {
+  color: Black;
 }
 
 #sortbyBtn {
     padding: 5px;
     cursor: pointer;
     position:absolute;
-    top:12px;
+    top:14px;
     right: 120px;
     background-color: whitesmoke;
     border: 2px solid Black;
@@ -35,56 +45,149 @@ a:hover {
   cursor: pointer;
 }
 
+/*Header*/
+
 .header {
   height: 55px;
   width: 100vw;
-  background-color: cadetblue;
+  background-color: white;
   position: fixed;
+  box-shadow: 0 4px 2px -2px grey;
 }
 
 .header h2 {
   text-align: center;
   color: Black;
   margin-top: 3px;
-  font-family: 'Helvetica Neue', sans-serif;
+  font-family: 'Open Sans', sans-serif;
   font-size: 34px;
   font-weight: bold;
   letter-spacing: 2px;
 }
 
-.header h4 {
+#sortByTitle {
   position:absolute;
   top:0;
-  right: 230px;
-  margin-top: 17px;*/
+  right: 260px;
+  margin-top: 10px;
   padding:5px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.sortSelector {
+  position: absolute;
+  top: 14px;
+  right: 120px;
+  /*background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;*/
+  background-image:
+   linear-gradient(45deg, transparent 50%, black 50%),
+   linear-gradient(135deg, black 50%, transparent 50%),
+   linear-gradient(to right, #ccc, #ccc);
+ background-position:
+   calc(100% - 15px) 11px,
+   calc(100% - 10px) 11px,
+   calc(100% - 33px);
+ background-size:
+   5px 5px,
+   5px 5px,
+   1px 1.5em;
+ background-repeat: no-repeat;
+  height: 23px;
+  overflow: hidden;
+  width: 130px;
+  border-radius: 5px;
+  background-color: whitesmoke;
+  border: 2px solid Black;
+}
+
+
+.sortSelector select {
+   background: transparent;
+   border: none;
+   font-size: 12px;
+   height: 29px;
+   padding: 5px;
+   margin-top: -3px;
+   width: 140px;
+   color: black;
+}
+
+select:focus {
+  outline: 0;
+}
+
+#zoomTitle {
+  position:absolute;
+  top:0;
+  left: 110px;
+  margin-top: 10px;
+  padding:5px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.zoomSelector {
+  position: absolute;
+  top: 14px;
+  left: 175px;
+  /*background: url(http://i62.tinypic.com/15xvbd5.png) no-repeat 96% 0;*/
+  background-image:
+   linear-gradient(45deg, transparent 50%, black 50%),
+   linear-gradient(135deg, black 50%, transparent 50%),
+   linear-gradient(to right, #ccc, #ccc);
+ background-position:
+   calc(100% - 15px) 11px,
+   calc(100% - 10px) 11px,
+   calc(100% - 33px);
+ background-size:
+   5px 5px,
+   5px 5px,
+   1px 1.5em;
+ background-repeat: no-repeat;
+  height: 23px;
+  overflow: hidden;
+  width: 130px;
+  border-radius: 5px;
+  background-color: whitesmoke;
+  border: 2px solid Black;
+}
+
+
+.zoomSelector select {
+   background: transparent;
+   border: none;
+   font-size: 12px;
+   height: 29px;
+   padding: 5px;
+   margin-top: -3px;
+   width: 140px;
+   color: black;
+}
+
+select:focus {
+  outline: 0;
 }
 
 #addNew {
   position:absolute;
-  top:12px;
+  top:14px;
   right: 30px;
   padding:5px;
   background-color: whitesmoke;
   border: 2px solid Black;
-  color: Black;
+  color: Black;f
   text-decoration:none;
   border-radius: 5px;
   cursor: pointer;
 }
 
 #addNew:hover {
-  font-weight: bold;
+  color: white;
+  background-color: black;
+  /*border: 2px solid white;*/
 }
 
 #addNew:active {
   color: Black;
-}
-
-#sortSelector {
-  position: absolute;
-  top: 17px;
-  right: 120px;
 }
 
 /*Modal*/
@@ -139,9 +242,11 @@ a:hover {
     bottom: 0;
     margin: auto;
     padding: 20px;
-    border: 1px solid #888;
+    border: 3px solid black;
+    border-radius: 10px;
     width: 80%;
     height: max-content;
+    font-family: 'Open Sans', sans-serif;
 }
 
 /* The Close Button */
@@ -176,7 +281,7 @@ a:hover {
   column-count: 3;
 }
 
-#modalCaseName {
+#modalCaseName, #trialCalendarTitle {
   text-align: center;
   text-decoration: underline;
 }
@@ -195,7 +300,6 @@ a:hover {
 
 #caseLine {
   stroke:black;
-  stroke-width:3
 }
 
 #schedConf {
@@ -223,12 +327,7 @@ width:20px;
 #eventCircle {
   stroke:black;
   stroke-width:1;
-  fill:red
-}
-
-#eventText {
-  font-size:14;
-  font-family:sans-serif;
+  fill: yellow;
 }
 
 #trialBox {
@@ -243,7 +342,6 @@ width:20px;
 
 #todayLine {
   stroke:blue;
-  stroke-width:3
 }
 
 #blackLine, #movingLine {
@@ -261,6 +359,9 @@ width:20px;
   stroke: lightgray;
   stroke-width:1
 }
+
+/*Trial Calendar Modal*/
+
 
 /*Footer*/
 #footer {

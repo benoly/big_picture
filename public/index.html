@@ -6,25 +6,35 @@
     <link href="icon.png" rel="shortcut icon" type="image/x-icon">
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
   </head>
 
   <body ng-controller="mainCtrl">
 
     <header class="header">
 
+      <button class="button" id="trialCalendar" ng-click="showTrialCalendar(event)">Trial Calendar</button>
+
+      <h4 id="zoomTitle">Zoom:</h4>
+
+      <div class="zoomSelector">
+        <select ng-model="zoomBy" ng-init="zoomBy='2.5'">
+          <option value="2.5">Regular</option>
+          <option value="1.25">Zoom Out</option>
+        </select>
+      </div>
+
       <h2>big_picture</h2>
 
-      <h4>Sort by:</h4>
+      <h4 id="sortByTitle">Sort by:</h4>
 
-      <select id="sortSelector" ng-model="sortBy" ng-init="sortBy='+schedConf'">
-        <option value="+schedConf">Sched. Conf.</option>
-        <option value="+events[3].date">Discovery</option>
-        <option value="+trial.beginDate">Trial Date</option>
-      </select>
-
-      <!-- <button class="button" id="trialCalendar">Trial Calendar</button> -->
-
-      <!-- <button class="button" id="sortbyBtn">Sort Cases</button> -->
+      <div class="sortSelector">
+        <select ng-model="sortBy" ng-init="sortBy='+schedConf'">
+          <option value="+schedConf">Sched. Conf.</option>
+          <option value="+events[3].date">Discovery</option>
+          <option value="+trial.beginDate">Trial Date</option>
+        </select>
+      </div>
 
       <a><button class="button" id="addNew">+ Add New</button></a>
 
@@ -32,9 +42,11 @@
 
     <add-new></add-new>
 
+    <trial-calendar-modal></trial-calendar-modal>
+
     <ui-view></ui-view>
 
-    <div id="footer" style="width:{{displayWidthX}}px">
+    <div id="footer" style="width:{{displayWidthX * zoomBy + 300}}px">
 
       <date-line></date-line>
 
