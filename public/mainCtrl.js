@@ -21,11 +21,11 @@ $scope.getCases = function(){
 
         // Today's Date
         $scope.todaysDate = moment().format("YYYY-MM-DD");
-        $scope.todaysDateDisplay = moment().format("MMM. DD 'YY");
+        $scope.todaysDateDisplay = moment().format("MM/DD/YY");
         $scope.todaysDateX = moment.utc().diff(moment.utc($scope.beginDate), 'days');
 
         //Center today's date line on reload ************
-        document.body.scrollLeft = ($scope.todaysDateX) - (window.outerWidth/2);
+        document.body.scrollLeft = ($scope.todaysDateX * 2.5 + 100) - (window.outerWidth/2);
 
         //Earliest Date
         $scope.beginDate = $scope.allTheCases[0].schedConf;
@@ -56,13 +56,13 @@ $scope.getCases = function(){
             $scope.allTheCases[k].trial.beginDate = moment.utc($scope.allTheCases[k].trial.beginDate).format("YYYY-MM-DD");
 
             //Trial begin date for display
-            $scope.allTheCases[k].trial.beginDateDisplay = moment.utc($scope.allTheCases[k].trial.beginDate).format("MMM. DD 'YY");
+            $scope.allTheCases[k].trial.beginDateDisplay = moment.utc($scope.allTheCases[k].trial.beginDate).format("MM/DD/YY");
 
             //Trial end date
             $scope.allTheCases[k].trial.endDate = moment.utc($scope.allTheCases[k].trial.endDate).format("YYYY-MM-DD");
 
             //Trial end date for the display
-            $scope.allTheCases[k].trial.endDateDisplay = moment.utc($scope.allTheCases[k].trial.endDate).format("MMM. DD 'YY");
+            $scope.allTheCases[k].trial.endDateDisplay = moment.utc($scope.allTheCases[k].trial.endDate).format("MM/DD/YY");
 
             //Latest date for the individual case (if a trial)
             $scope.allTheCases[k].latestEndDateForCase = $scope.allTheCases[k].trial.endDate;
@@ -111,7 +111,7 @@ $scope.getCases = function(){
             //Formats date and sets X-coordinate if an event date exists
             if($scope.allTheCases[k].events[l].date){
               $scope.allTheCases[k].events[l].date = moment.utc($scope.allTheCases[k].events[l].date).format("YYYY-MM-DD");
-              $scope.allTheCases[k].events[l].dateDisplay = moment.utc($scope.allTheCases[k].events[l].date).format("MMM. DD 'YY");
+              $scope.allTheCases[k].events[l].dateDisplay = moment.utc($scope.allTheCases[k].events[l].date).format("MM/DD/YY");
               $scope.allTheCases[k].events[l].positionX = moment.utc($scope.allTheCases[k].events[l].date).diff(moment.utc($scope.beginDate),'days');
 
               //Calculates days until events that are beyond today

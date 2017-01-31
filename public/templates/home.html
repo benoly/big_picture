@@ -11,7 +11,7 @@
 
       <line id="caseLine" ng-attr-x1="{{case.schedConfX * zoomBy + 100}}" ng-attr-y1="{{($index + 1) * (zoomBy * 50)}}" ng-attr-x2="{{case.lastDateX * zoomBy + 100}}" ng-attr-y2="{{($index + 1) * (zoomBy * 50)}}" style="stroke-width:{{zoomBy}}"/>
 
-      <circle id="schedConf" ng-attr-cx="{{case.schedConfX * zoomBy + 100}}" ng-attr-cy="{{($index + 1) * (zoomBy * 50)}}" r="{{zoomBy * 4}}"/>
+      <circle id="schedConf" ng-attr-cx="{{case.schedConfX * zoomBy + 100}}" ng-attr-cy="{{($index + 1) * (zoomBy * 50)}}" style="stroke-width:{{zoomBy}}" r="{{zoomBy * 4}}"/>
         <a><text id="caseName" ng-click="showCaseInfo(case)" ng-attr-x="{{(case.schedConfX * zoomBy + 100) - 5}}" ng-attr-y="{{(($index + 1) * (zoomBy * 50)) + (zoomBy * 16)}}" font-size="{{zoomBy * 8}}">{{case.name}}</text></a>
 
         <a ng-mouseenter="showEdit = true" ng-mouseleave="showEdit = false"><image id="editPencil" ng-click="showEditInfo(case)" xlink:href="64px-Black_pencil.svg.png" ng-attr-x="{{(case.schedConfX * zoomBy + 100) - 40}}" ng-attr-y="{{(($index + 1) * (zoomBy * 50)) - 10}}"></a>

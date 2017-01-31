@@ -304,7 +304,6 @@ select:focus {
 
 #schedConf {
   stroke:black;
-  stroke-width:3;
   fill:green;
 }
 
@@ -333,11 +332,11 @@ width:20px;
 #trialBox {
   fill:red;
   stroke:black;
-  stroke-width:2
+  /*stroke-width:2*/
 }
 
 #dateLine {
-  stroke-width:3
+  stroke-width:2
 }
 
 #todayLine {
